@@ -1,18 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Welcome</h1>
+    <button @click="redirectBooksIndex()">View all books</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
+  data: function () {
+    return {};
+  },
+  methods: {
+    redirectBooksIndex: function () {
+      console.log("Redirecting to /books");
+      this.$route.push("/books");
+    },
   },
 };
 </script>
