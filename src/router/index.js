@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import BooksIndex from "../views/BooksIndex.vue";
 import BooksShow from "../views/BooksShow.vue";
 import BooksEdit from "../views/BooksEdit.vue";
+import BooksNew from "../views/BooksNew.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/books/:id/edit",
     name: "books-edit",
     component: BooksEdit,
+  },
+  {
+    path: "/books/submit",
+    name: "books-new",
+    component: BooksNew,
   },
   {
     path: "/about",
