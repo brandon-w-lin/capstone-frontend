@@ -16,7 +16,7 @@ export default {
   methods: {
     redirectBooksIndex: function () {
       console.log("Redirecting to /books");
-      this.$route.push("/books");
+      this.$router.push("/books");
     },
   },
 };
