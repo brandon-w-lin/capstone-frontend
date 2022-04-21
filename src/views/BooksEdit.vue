@@ -41,6 +41,7 @@
   <div>
     <button @click="redirectBooksIndex()">Back to all books</button>
     <button @click="redirectBooksShow()">Back to Book</button>
+    <button @click="deleteBook()">Delete</button>
   </div>
 </template>
 
@@ -77,6 +78,14 @@ export default {
         // display a "success" message, then redirect
       });
       this.redirectBooksShow();
+    },
+    deleteBook: function () {
+      axios.delete("http://localhost:3000/books/" + this.$route.params.id + ".json").then((response) => {
+        console.log("successfully deleted book", response.data);
+        this.book = response.data;
+        // display a "success" message, then redirect
+      });
+      this.redirectBooksIndex();
     },
   },
   created: function () {
