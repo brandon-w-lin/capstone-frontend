@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import BooksIndex from "../views/BooksIndex.vue";
 import BooksShow from "../views/BooksShow.vue";
+import BooksEdit from "../views/BooksEdit.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/books/:id",
     name: "books-show",
     component: BooksShow,
+  },
+  {
+    path: "/books/:id/edit",
+    name: "books-edit",
+    component: BooksEdit,
   },
   {
     path: "/about",
