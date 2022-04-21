@@ -3,7 +3,7 @@
     <h1>All books</h1>
     <div v-for="book in books" :key="book.id">
       {{ book }}
-      <button @click="redirectBooksShow()">More Info</button>
+      <button @click="redirectBooksShow(book)">More Info</button>
     </div>
   </div>
 </template>
@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     redirectBooksShow: function (book) {
-      console.log("Redirecting to /books");
-      this.$route.push("/books/" + book.id + ".json");
+      console.log("Redirecting to /books/" + book.id);
+      this.$router.push("/books/" + book.id);
     },
     getBooks: function () {
       axios.get("http://localhost:3000/books.json").then((response) => {
