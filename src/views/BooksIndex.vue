@@ -19,8 +19,9 @@
   <div class="row">
     <div class="card m-3" style="max-width: 540px" v-for="book in books" :key="book.id">
       <div class="row g-0">
-        <div class="col-md-4">
-          <img :src="book.cover_image_url" class="img-fluid rounded-start" alt="..." />
+        <div class="col-md-4 p-1 cover-image">
+          <!-- <img :src="book.cover_image_url" class="img-fluid rounded-start" alt="..." /> -->
+          <img :src="book.cover_image_url" class="img-fluid img-thumbnail rounded-start" alt="..." />
         </div>
         <div class="col-md-8">
           <div class="card-body">

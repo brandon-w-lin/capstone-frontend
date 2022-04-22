@@ -68,6 +68,10 @@ h1 {
   padding: 5px;
 }
 
+.cover-image {
+  /* object-fit: cover; */
+  margin: auto;
+}
 .container {
   border-style: solid;
   border-color: antiquewhite;
