@@ -63,11 +63,6 @@ body {
   background-color: #284b63;
 }
 
-h1 {
-  color: #ffffff;
-  padding: 5px;
-}
-
 .cover-image {
   /* object-fit: cover; */
   margin: auto;
