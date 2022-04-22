@@ -32,8 +32,9 @@
       </div>
     </div>
   </nav>
-
-  <router-view />
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 <style>
@@ -65,5 +66,10 @@ body {
 h1 {
   color: #ffffff;
   padding: 5px;
+}
+
+.container {
+  border-style: solid;
+  border-color: antiquewhite;
 }
 </style>

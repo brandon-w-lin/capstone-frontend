@@ -1,9 +1,8 @@
 <template>
-  <div class="container">
-    <h1>All books</h1>
+  <h1>All books</h1>
 
-    <!-- cards not in use -->
-    <!-- <div class="row">
+  <!-- cards not in use -->
+  <!-- <div class="row">
       <div class="col-sm-4 mb-2" v-for="book in books" :key="book.id">
         <div class="card">
           <div class="card-body">
@@ -14,25 +13,24 @@
         </div>
       </div>
     </div> -->
-    <!-- <div class="card mb-3" style="max-width: 540px" v-for="book in books" :key="book.id"> -->
+  <!-- <div class="card mb-3" style="max-width: 540px" v-for="book in books" :key="book.id"> -->
 
-    <!-- cards in use -->
-    <div class="row">
-      <div class="card m-3" style="max-width: 540px" v-for="book in books" :key="book.id">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img :src="book.cover_image_url" class="img-fluid rounded-start" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ book.title }}</h5>
-              <p class="card-text">
-                {{ book.summary.substring(0, charLimit) + (book.summary.length > charLimit ? "..." : "") }}
-              </p>
-              <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
+  <!-- cards in use -->
+  <div class="row">
+    <div class="card m-3" style="max-width: 540px" v-for="book in books" :key="book.id">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img :src="book.cover_image_url" class="img-fluid rounded-start" alt="..." />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">
+              {{ book.summary.substring(0, charLimit) + (book.summary.length > charLimit ? "..." : "") }}
+            </p>
+            <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
 
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
         </div>
       </div>
