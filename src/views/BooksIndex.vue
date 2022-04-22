@@ -1,5 +1,10 @@
 <template>
-  <h1>All books</h1>
+  <div class="card m-1">
+    <h1>All books</h1>
+    <div class="card-body">
+      <a href="./BooksNew.vue" class="btn btn-primary">Submit a new book</a>
+    </div>
+  </div>
 
   <!-- cards not in use -->
   <!-- <div class="row">
@@ -50,10 +55,6 @@ export default {
     };
   },
   methods: {
-    redirectBooksShow: function (book) {
-      console.log("Redirecting to /books/" + book.id);
-      this.$router.push("/books/" + book.id);
-    },
     getBooks: function () {
       axios.get("http://localhost:3000/books.json").then((response) => {
         console.log(response.data);
