@@ -1,9 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+
+// Books
 import BooksIndex from "../views/BooksIndex.vue";
 import BooksShow from "../views/BooksShow.vue";
 import BooksEdit from "../views/BooksEdit.vue";
 import BooksNew from "../views/BooksNew.vue";
+// Songs
+import SongsIndex from "../views/SongsIndex.vue";
+// import SongsShow from "../views/SongsShow.vue";
+// import SongsEdit from "../views/SongsEdit.vue";
+// import SongsNew from "../views/SongsNew.vue";
 
 const routes = [
   {
@@ -11,6 +18,15 @@ const routes = [
     name: "home",
     component: HomeView,
   },
+  {
+    path: "/about",
+    name: "about",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  // Books
   {
     path: "/books",
     name: "books-index",
@@ -31,14 +47,27 @@ const routes = [
     name: "books-new",
     component: BooksNew,
   },
+  // Songs
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/songs",
+    name: "songs-index",
+    component: SongsIndex,
   },
+  // {
+  //   path: "/songs/:id",
+  //   name: "songs-show",
+  //   component: SongsShow,
+  // },
+  // {
+  //   path: "/songs/:id/edit",
+  //   name: "songs-edit",
+  //   component: SongsEdit,
+  // },
+  // {
+  //   path: "/songs/submit",
+  //   name: "songs-new",
+  //   component: SongsNew,
+  // },
 ];
 
 const router = createRouter({
