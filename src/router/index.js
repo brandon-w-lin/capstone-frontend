@@ -10,7 +10,7 @@ import BooksNew from "../views/BooksNew.vue";
 import SongsIndex from "../views/SongsIndex.vue";
 import SongsShow from "../views/SongsShow.vue";
 // import SongsEdit from "../views/SongsEdit.vue";
-// import SongsNew from "../views/SongsNew.vue";
+import SongsNew from "../views/SongsNew.vue";
 
 const routes = [
   {
@@ -63,11 +63,11 @@ const routes = [
   //   name: "songs-edit",
   //   component: SongsEdit,
   // },
-  // {
-  //   path: "/songs/submit",
-  //   name: "songs-new",
-  //   component: SongsNew,
-  // },
+  {
+    path: "/songs/submit",
+    name: "songs-new",
+    component: SongsNew,
+  },
 ];
 
 const router = createRouter({
