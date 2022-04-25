@@ -9,7 +9,7 @@ import BooksNew from "../views/BooksNew.vue";
 // Songs
 import SongsIndex from "../views/SongsIndex.vue";
 import SongsShow from "../views/SongsShow.vue";
-// import SongsEdit from "../views/SongsEdit.vue";
+import SongsEdit from "../views/SongsEdit.vue";
 import SongsNew from "../views/SongsNew.vue";
 
 const routes = [
@@ -58,11 +58,11 @@ const routes = [
     name: "songs-show",
     component: SongsShow,
   },
-  // {
-  //   path: "/songs/:id/edit",
-  //   name: "songs-edit",
-  //   component: SongsEdit,
-  // },
+  {
+    path: "/songs/:id/edit",
+    name: "songs-edit",
+    component: SongsEdit,
+  },
   {
     path: "/songs/submit",
     name: "songs-new",
