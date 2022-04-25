@@ -8,7 +8,7 @@
     <div class="card-body">
       <form>
         <p>
-          <span>ISBN:</span>
+          <span>URL:</span>
           <input type="text" v-model="song.url" placeholder="URL" />
         </p>
         <p>
