@@ -6,6 +6,7 @@ import BooksIndex from "../views/BooksIndex.vue";
 import BooksShow from "../views/BooksShow.vue";
 import BooksEdit from "../views/BooksEdit.vue";
 import BooksNew from "../views/BooksNew.vue";
+import BooksSearch from "../views/BooksSearch.vue";
 // Songs
 import SongsIndex from "../views/SongsIndex.vue";
 import SongsShow from "../views/SongsShow.vue";
@@ -46,6 +47,11 @@ const routes = [
     path: "/books/submit",
     name: "books-new",
     component: BooksNew,
+  },
+  {
+    path: "/books/search",
+    name: "books-search",
+    component: BooksSearch,
   },
   // Songs
   {
