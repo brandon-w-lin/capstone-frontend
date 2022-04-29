@@ -1,11 +1,31 @@
 <template>
-  <div class="home">Books show</div>
   <div>
-    {{ book }}
+    <div class="column">test left</div>
+    <div class="column">test right</div>
   </div>
-  <div>
-    <button @click="redirectBooksIndex()">Back to all books</button>
-    <button @click="redirectBooksEdit()">Edit Book</button>
+  <div class="card m-1">
+    <div class="card-body">
+      <h2 class="card-subtitle text-muted">
+        <i>{{ book.subtitle }}</i>
+      </h2>
+      <h1 class="card-title">
+        {{ book.title }}
+      </h1>
+      <h3>{{ book.authors.join(", ") }}</h3>
+      <div>{{ book.publisher }}</div>
+      <div>{{ book.publishedDate }}</div>
+      <div>{{ book.description }}</div>
+      <div>{{ book.categories[0] }}</div>
+      <div v-for="identifier in book.industryIdentifiers" :key="identifier.type">
+        {{ `${identifier.type}: ${identifier.identifier}` }}
+      </div>
+    </div>
+  </div>
+  <div class="card m-1">
+    <div class="card-body">
+      <a href="./" class="btn btn-primary">Back to all books</a>
+      <a href="./" class="btn btn-primary">Back to all books</a>
+    </div>
   </div>
 </template>
 
@@ -17,6 +37,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
+      apiResponse: {},
       book: {},
     };
   },
@@ -30,9 +51,10 @@ export default {
       this.$router.push("/books/" + this.$route.params.id + "/edit");
     },
     showBook: function () {
-      axios.get("http://localhost:3000/books/" + this.$route.params.id + ".json").then((response) => {
+      axios.get("https://www.googleapis.com/books/v1/volumes/1ADsV84Tpl4C").then((response) => {
         console.log(response.data);
-        this.book = response.data;
+        this.apiResponse = response.data;
+        this.book = response.data.volumeInfo;
       });
     },
   },
