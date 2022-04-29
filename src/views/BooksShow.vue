@@ -24,7 +24,7 @@
   <div class="card m-1">
     <div class="card-body">
       <a href="./" class="btn btn-primary">Back to all books</a>
-      <a href="./" class="btn btn-primary">Back to all books</a>
+      <a :href="'./books/' + this.$route.params.id + '/edit'" class="btn btn-primary">Edit</a>
     </div>
   </div>
 </template>
@@ -51,7 +51,7 @@ export default {
       this.$router.push("/books/" + this.$route.params.id + "/edit");
     },
     showBook: function () {
-      axios.get("https://www.googleapis.com/books/v1/volumes/1ADsV84Tpl4C").then((response) => {
+      axios.get("https://www.googleapis.com/books/v1/volumes/" + this.$route.params.id).then((response) => {
         console.log(response.data);
         this.apiResponse = response.data;
         this.book = response.data.volumeInfo;
