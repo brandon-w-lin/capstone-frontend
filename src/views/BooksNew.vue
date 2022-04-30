@@ -8,6 +8,10 @@
     <div class="card-body">
       <form>
         <p>
+          <span>Google ID:</span>
+          <input type="text" v-model="book.googleID" placeholder="Google ID" />
+        </p>
+        <!-- <p>
           <span>ISBN:</span>
           <input type="text" v-model="book.isbn" placeholder="ISBN" />
         </p>
@@ -38,7 +42,7 @@
         <p>
           <span>Year published:</span>
           <input type="text" v-model="book.year" placeholder="Year" />
-        </p>
+        </p> -->
       </form>
       <button @click="createBook()" class="btn btn-primary">Submit</button>
     </div>
