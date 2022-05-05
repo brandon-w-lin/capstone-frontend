@@ -1,5 +1,5 @@
 <template>
-  <div class="card m-1">
+  <div class="card">
     <h1>All books</h1>
     <div class="card-body">
       <a href="/books/submit" class="btn btn-primary">Submit a new book</a>
@@ -23,10 +23,18 @@
   <!-- cards in use -->
 
   <div class="row">
-    <div class="card m-3" style="max-width: 540px" v-for="book in results.items" :key="book.id">
+    <div class="card m-3" style="max-width: 540px" v-for="book in results" :key="book.id">
       <div class="row g-0">
         <div class="col-md-4 p-1 cover-image">
-          <img :src="book.volumeInfo.imageLinks.thumbnail" class="img-fluid img-thumbnail rounded-start" alt="..." />
+          <img
+            :src="
+              book.volumeInfo.imageLinks
+                ? Object.values(book.volumeInfo.imageLinks).pop()
+                : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
+            "
+            class="img-fluid img-thumbnail rounded-start"
+            alt=""
+          />
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -65,7 +73,7 @@ export default {
         .get("https://www.googleapis.com/books/v1/volumes?q=gardens+of+the+moon+inauthor:steven+erikson")
         .then((response) => {
           console.log(response.data);
-          this.results = response.data;
+          this.results = response.data.items;
         });
     },
   },
