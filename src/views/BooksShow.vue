@@ -14,7 +14,7 @@
       <h3>{{ book.authors.join(", ") }}</h3>
       <div>{{ book.publisher }}</div>
       <div>{{ book.publishedDate }}</div>
-      <div>{{ book.description }}</div>
+      <div v-html="book.description"></div>
       <div>{{ book.categories[0] }}</div>
       <div v-for="identifier in book.industryIdentifiers" :key="identifier.type">
         {{ `${identifier.type}: ${identifier.identifier}` }}
@@ -55,6 +55,7 @@ export default {
         console.log(response.data);
         this.apiResponse = response.data;
         this.book = response.data.volumeInfo;
+        // this.book.description = this.book.description.setHTML();
       });
     },
   },

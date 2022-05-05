@@ -30,9 +30,10 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">{{ book.title }}</h5>
-            <p class="card-text">
-              {{ book.description.substring(0, charLimit) + (book.description.length > charLimit ? "..." : "") }}
-            </p>
+            <p
+              class="card-text"
+              v-html="book.description.substring(0, charLimit) + (book.description.length > charLimit ? '...' : '')"
+            ></p>
             <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
 
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -59,9 +60,12 @@ export default {
   },
   methods: {
     getBooks: function () {
+      // First pulls the indexed books from the local backend
       axios.get("http://localhost:3000/books.json").then((response) => {
         console.log("books in my API: ", response.data);
         this.catalogued_books = response.data;
+
+        // Then, pulls book data from the google books API
         response.data.forEach((book) => {
           axios.get("https://www.googleapis.com/books/v1/volumes/" + book.googleID).then((response) => {
             let temp = response.data.volumeInfo;
