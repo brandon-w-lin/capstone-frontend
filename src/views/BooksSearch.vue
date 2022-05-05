@@ -1,26 +1,10 @@
 <template>
   <div class="card">
-    <h1>All books</h1>
+    <h1>Search results</h1>
     <div class="card-body">
       <a href="/books/submit" class="btn btn-primary">Submit a new book</a>
     </div>
   </div>
-
-  <!-- cards not in use -->
-  <!-- <div class="row">
-      <div class="col-sm-4 mb-2" v-for="book in books" :key="book.id">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ book.title }}</h5>
-            <p class="card-text">Brief blurb about the book</p>
-            <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  <!-- <div class="card mb-3" style="max-width: 540px" v-for="book in books" :key="book.id"> -->
-
-  <!-- cards in use -->
 
   <div class="row">
     <div class="card m-3" style="max-width: 540px" v-for="book in results" :key="book.id">
