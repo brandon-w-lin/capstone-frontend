@@ -26,8 +26,16 @@
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <input
+            v-model="searchQuery"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <router-link class="btn btn-outline-success" :to="{ path: '/books/search', query: { q: searchQuery } }">
+            Search
+          </router-link>
         </form>
       </div>
     </div>
@@ -36,6 +44,22 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  data: function () {
+    return {
+      searchQuery: "",
+    };
+  },
+  methods: {
+    search: function (query) {
+      console.log("testing query: ", "books/search" + query);
+      this.$router.push({ path: "/books/search", query: { q: query } });
+    },
+  },
+};
+</script>
 
 <style>
 #app {
