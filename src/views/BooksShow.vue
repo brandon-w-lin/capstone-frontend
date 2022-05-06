@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <!-- Left side of page holding book info -->
-      <div class="col-sm-6">
+      <div class="col-sm-6 p-2">
         <!-- holds book info -->
         <div class="card p-3 m-2">
           <!-- This row holds the picture and main book info -->
@@ -46,11 +46,11 @@
       </div>
 
       <!-- Right side of page holding top songs -->
-      <div class="col-sm-5 m-2">
-        <div class="row card mb-2 h2">Most played songs for {{ book.title }}</div>
-        <div class="row card mb-2">Song 1</div>
-        <div class="row card mb-2">Song 2</div>
-        <div class="row card mb-2">Song 3</div>
+      <div class="col-sm-6 p-2">
+        <div class="row card m-2 h2">Most played songs for {{ book.title }}</div>
+        <div class="row card m-2">Song 1</div>
+        <div class="row card m-2">Song 2</div>
+        <div class="row card m-2">Song 3</div>
       </div>
     </div>
   </div>
