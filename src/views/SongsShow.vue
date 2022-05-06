@@ -2,6 +2,7 @@
   <div class="home">songs show</div>
   <div>
     {{ song }}
+    <div data-video="wtHra9tFISY" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
   </div>
   <div>
     <button @click="redirectSongsIndex()">Back to all songs</button>
