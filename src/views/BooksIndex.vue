@@ -12,11 +12,22 @@
       <div class="card">
         <div class="row">
           <div class="col-sm-4 p-1 cover-image">
-            <img :src="book.imageLinks.thumbnail" class="img-fluid img-thumbnail rounded-start" alt="..." />
+            <img
+              :src="
+                book.imageLinks
+                  ? Object.values(book.imageLinks).pop()
+                  : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
+              "
+              class="img-fluid img-thumbnail rounded-start"
+              alt=""
+            />
           </div>
           <div class="col-sm-8">
             <div class="card-body text-left">
               <h5 class="card-title">{{ book.title }}</h5>
+              <h6 class="card-subtitle">
+                {{ book.authors ? book.authors.join(", ") : "Author(s) unknown" }}
+              </h6>
               <p
                 class="card-text"
                 style="height: 100px; text-overflow: ellipsis; overflow: hidden"
