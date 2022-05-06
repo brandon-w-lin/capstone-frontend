@@ -1,17 +1,18 @@
 <template>
-  <div class="home">songs show</div>
-  <div>
-    <!-- <div id="player"></div> -->
-    <div data-video="not used" data-autoplay="0" data-loop="1" id="player"></div>
+  <div class="container">
+    <div class="row p-2">
+      <div class="card m-1">
+        <div data-video="not used" data-autoplay="0" data-loop="1" id="player"></div>
+      </div>
+      <div class="card m-1">
+        <a href="/songs" class="btn">Back to all songs</a>
+        <!-- <button @click="redirectSongsIndex()">Back to all songs</button> -->
+      </div>
+      <!-- <div id="player"></div> -->
+    </div>
   </div>
-  <!-- <div>
-    <div data-video="wtHra9tFISY" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
-  </div> -->
+
   <div>
-    <!-- <button @click="parseYTExtension('https://www.youtube.com/watch?v=vbKy6FuACKg')">parse yt extension</button> -->
-    <button @click="onYouTubeIframeAPIReady()">create youtube player</button>
-    <button @click="createMediaPlayer()">create media player</button>
-    <button @click="redirectSongsIndex()">Back to all songs</button>
     <button @click="redirectSongsEdit()">Edit song</button>
   </div>
 </template>
