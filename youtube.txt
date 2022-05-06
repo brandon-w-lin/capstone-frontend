@@ -1,0 +1,37 @@
+https://developers.google.com/youtube/iframe_api_reference
+https://developers.google.com/youtube/player_parameters
+https://www.labnol.org/internet/youtube-audio-player/26740/
+
+player.getPlayerState():Number
+Returns the state of the player. Possible values are:
+-1 – unstarted
+0 – ended
+1 – playing
+2 – paused
+3 – buffering
+5 – video cued
+
+seeking:
+player.seekTo(seconds:Number, allowSeekAhead:Boolean):Void
+
+player.getCurrentTime():Number
+Returns the elapsed time in seconds since the video started playing.
+
+Retrieving video information
+player.getDuration():Number
+Returns the duration in seconds of the currently playing video. Note that getDuration() will return 0 until the video's metadata is loaded, which normally happens just after the video starts playing.
+
+Changing the player volume
+- player.mute():Void
+Mutes the player.
+- player.unMute():Void
+Unmutes the player.
+- player.isMuted():Boolean
+Returns true if the player is muted, false if not.
+- player.setVolume(volume:Number):Void
+Sets the volume. Accepts an integer between 0 and 100.
+- player.getVolume():Number
+Returns the player's current volume, an integer between 0 and 100. Note that getVolume() will return the volume even if the player is muted.
+
+player.destroy():Void
+Removes the <iframe> containing the player.
