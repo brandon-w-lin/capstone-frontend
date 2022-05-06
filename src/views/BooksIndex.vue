@@ -1,42 +1,31 @@
 <template>
-  <div class="card m-1">
+  <div class="row card">
     <h1>All books</h1>
     <div class="card-body">
       <a href="/books/submit" class="btn btn-primary">Submit a new book</a>
     </div>
   </div>
 
-  <!-- cards not in use -->
-  <!-- <div class="row">
-      <div class="col-sm-4 mb-2" v-for="book in books" :key="book.id">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ book.title }}</h5>
-            <p class="card-text">Brief blurb about the book</p>
-            <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  <!-- <div class="card mb-3" style="max-width: 540px" v-for="book in books" :key="book.id"> -->
-
-  <!-- cards in use -->
   <div class="row">
-    <div class="card m-3" style="max-width: 540px" v-for="book in books" :key="book.id">
-      <div class="row g-0">
-        <div class="col-md-4 p-1 cover-image">
-          <img :src="book.imageLinks.thumbnail" class="img-fluid img-thumbnail rounded-start" alt="..." />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ book.title }}</h5>
-            <p
-              class="card-text"
-              v-html="book.description.substring(0, charLimit) + (book.description.length > charLimit ? '...' : '')"
-            ></p>
-            <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
+    <!-- Padding added to the column before adding the card -->
+    <div class="col-6 p-3" v-for="book in books" :key="book.id">
+      <div class="card">
+        <div class="row">
+          <div class="col-sm-4 p-1 cover-image">
+            <img :src="book.imageLinks.thumbnail" class="img-fluid img-thumbnail rounded-start" alt="..." />
+          </div>
+          <div class="col-sm-8">
+            <div class="card-body text-left">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <p
+                class="card-text"
+                style="height: 100px; text-overflow: ellipsis; overflow: hidden"
+                v-html="book.description"
+              ></p>
+              <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
 
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
           </div>
         </div>
       </div>
@@ -82,3 +71,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.centered {
+  margin: 0 auto;
+}
+</style>
