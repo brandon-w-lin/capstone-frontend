@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">Tunes For Tomes</a>
       <button
         class="navbar-toggler"
@@ -90,9 +90,5 @@ body {
 .cover-image {
   /* object-fit: cover; */
   margin: auto;
-}
-.container {
-  border-style: solid;
-  border-color: antiquewhite;
 }
 </style>
