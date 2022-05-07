@@ -15,7 +15,7 @@
             <img
               :src="
                 book.imageLinks
-                  ? Object.values(book.imageLinks).pop()
+                  ? book.imageLinks.thumbnail || Object.values(book.imageLinks).pop()
                   : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
               "
               class="img-fluid img-thumbnail rounded-start"
