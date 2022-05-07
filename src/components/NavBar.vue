@@ -46,5 +46,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: function () {
+    return {
+      searchQuery: "",
+    };
+  },
+  methods: {
+    search: function (query) {
+      console.log("testing query: ", "books/search" + query);
+      this.$router.push({ path: "/books/search", query: { q: query } });
+    },
+  },
+};
 </script>

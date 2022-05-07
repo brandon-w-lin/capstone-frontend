@@ -12,17 +12,6 @@ export default {
   components: {
     NavBar,
   },
-  data: function () {
-    return {
-      searchQuery: "",
-    };
-  },
-  methods: {
-    search: function (query) {
-      console.log("testing query: ", "books/search" + query);
-      this.$router.push({ path: "/books/search", query: { q: query } });
-    },
-  },
 };
 </script>
 
