@@ -1,0 +1,7 @@
+One index page that holds the cards, formatting, etc
+
+Pass the data from the view down to the component
+- Is it possible to send down the entire card, or do we send the JSON and have the child parse it out? That would then require some conditionals on the child component...
+Pass the formatting up from the component to the view
+
+Want to have an audio component that sticks on the app page, but takes a param from whichever page the user is on. For example, if someone picks a song on one page, it plays, and continues to play, even if they are navigating around. 

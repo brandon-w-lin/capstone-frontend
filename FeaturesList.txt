@@ -1,0 +1,25 @@
+- Components for the index cards (used on search results, books, songs)
+- Media player
+  - Plays even when switching pages
+  - Has scrolling
+  - Will receive songs from any page
+  - Has a queue functionality
+- Music search
+
+- Books search
+  - Fix the sizing
+
+- Welcome page
+  - Shows end users how site works
+
+- About page
+  - Talks about development
+
+- Index page
+  - responsive to single stack of cards
+  - filters
+  - Fix the sizing so they are consistent (Multi line titles, etc. causing longer cards than others)
+
+- Book show page
+  - Top songs
+  - All associated songs 

@@ -13,7 +13,15 @@ import SongsShow from "../views/SongsShow.vue";
 import SongsEdit from "../views/SongsEdit.vue";
 import SongsNew from "../views/SongsNew.vue";
 
+// Test
+import TestParent from "../views/TestParent.vue";
+
 const routes = [
+  {
+    path: "/testparent",
+    name: "test-parent",
+    component: TestParent,
+  },
   {
     path: "/",
     name: "home",
