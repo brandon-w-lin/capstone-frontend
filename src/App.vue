@@ -1,5 +1,6 @@
 <template>
   <NavBar />
+  <AudioComponent />
   <div class="container">
     <router-view />
   </div>
@@ -7,10 +8,12 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import AudioComponent from "@/components/AudioComponent.vue";
 
 export default {
   components: {
     NavBar,
+    AudioComponent,
   },
 };
 </script>
