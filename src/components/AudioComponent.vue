@@ -17,9 +17,17 @@
       <div class="col card m-1">
         Stuff about the song playing
         <div class="slidecontainer">
-          <span>{{ this.currentTime }}</span>
-          <input type="range" min="0" max="100" value="0" class="slider" id="progressBar" @change="scrollTo()" />
-          <span></span>
+          <span>{{ this.formattedCurrentTime }}</span>
+          <input
+            type="range"
+            min="0"
+            :max="this.duration"
+            :value="currentTime"
+            class="slider"
+            id="progressBar"
+            @change="scrollTo()"
+          />
+          <span>{{ formatTime(this.duration) }}</span>
         </div>
       </div>
       <button @click="changeSong('yB-c85V8Zsg')">change song</button>
@@ -48,7 +56,10 @@ export default {
         title: "test",
         length: 100,
       },
+      duration: 0,
       currentTime: 0,
+      formattedCurrentTime: 0,
+      formattedDuration: 0,
       progressBar: 0,
     };
   },
@@ -79,6 +90,8 @@ export default {
     // Routes actions in the music player whenever the YT player state changes
     musicController() {
       console.log(this.YTplayer.getPlayerState());
+      this.duration = this.YTplayer.getDuration();
+      this.formattedDuration = this.formatTime(this.duration);
       this.playPauseGraphicChange();
       this.YTplayer.getPlayerState() !== 1 ? this.stopProgressBar() : this.startProgressBar();
     },
@@ -88,11 +101,24 @@ export default {
       console.log("hello from startProgressBar");
       this.progressBar = setInterval(this.trackTime, 1000);
     },
+    formatTime(input_seconds) {
+      // Formatting for render on screen
+      var dateObj = new Date(Math.floor(input_seconds * 1000));
+      var hours = dateObj.getUTCHours();
+      var minutes = dateObj.getUTCMinutes();
+      var seconds = dateObj.getSeconds();
+
+      var o1 = input_seconds > 3600 ? hours.toString().padStart(2, "0") + ":" : "";
+      var o2 = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+      return o1 + o2;
+    },
     trackTime() {
       this.currentTime = this.YTplayer.getCurrentTime();
-      document.getElementById("progressBar").value = this.currentTime;
+      this.formattedCurrentTime = this.formatTime(this.currentTime);
+      // document.getElementById("progressBar").value = this.currentTime;
       console.log(this.currentTime);
     },
+
     stopProgressBar() {
       console.log("hello from stopProgressBar");
       clearInterval(this.progressBar);
