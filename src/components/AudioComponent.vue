@@ -17,7 +17,9 @@
       <div class="col card m-1">
         Stuff about the song playing
         <div class="slidecontainer">
-          <input type="range" min="0" max="100" :value="currentTime" class="slider" id="myRange" />
+          <span>{{ this.currentTime }}</span>
+          <input type="range" min="0" max="100" value="0" class="slider" id="progressBar" @change="scrollTo()" />
+          <span></span>
         </div>
       </div>
       <button @click="changeSong('yB-c85V8Zsg')">change song</button>
@@ -51,51 +53,72 @@ export default {
     };
   },
   methods: {
-    startProgressBar() {
-      console.log("hello from startProgressBar");
-      this.progressBar = setInterval(this.trackTime, 1000);
-    },
-    stopProgressBar() {
-      console.log("hello from stopProgressBar");
-      clearInterval(this.progressBar);
-    },
-    trackTime() {
-      this.currentTime = this.YTplayer.getCurrentTime();
-      console.log(this.currentTime);
-    },
-    changeSong(song) {
-      console.log("changing song to " + song);
-      this.YTplayer.loadVideoById(song);
-    },
+    // Creates the youtube player from which the music will come
     onYouTubeIframeAPIReady(song) {
       console.log("called onYouTubeIframeAPIReady for" + song);
       this.YTplayer = new YT.Player("youtube-player", {
-        height: "0",
-        width: "0",
+        height: "300",
+        width: "400",
         // videoId: e.dataset.video,
         videoId: song,
-        // playerVars: { autoplay: e.dataset.autoplay, loop: e.dataset.loop },
+        playerVars: { autoplay: 1 },
         events: {
           onReady: function () {
             console.log("hello from clickSong onReady event");
             this.YTplayer.setPlaybackQuality("small");
           },
-          onStateChange: function (e) {
-            e.data === YT.PlayerState.ENDED;
-          },
+          onStateChange: this.musicController,
+          // onStateChange: function (e) {
+          //   e.data === YT.PlayerState.ENDED;
+          // },
+          // onStateChange: function () {
+          // },
         },
       });
     },
+    // Routes actions in the music player whenever the YT player state changes
+    musicController() {
+      console.log(this.YTplayer.getPlayerState());
+      this.playPauseGraphicChange();
+      this.YTplayer.getPlayerState() !== 1 ? this.stopProgressBar() : this.startProgressBar();
+    },
+
+    // Creates and destroys the 1s interval that updates the scroll bar
+    startProgressBar() {
+      console.log("hello from startProgressBar");
+      this.progressBar = setInterval(this.trackTime, 1000);
+    },
+    trackTime() {
+      this.currentTime = this.YTplayer.getCurrentTime();
+      document.getElementById("progressBar").value = this.currentTime;
+      console.log(this.currentTime);
+    },
+    stopProgressBar() {
+      console.log("hello from stopProgressBar");
+      clearInterval(this.progressBar);
+    },
+
+    // Needs to get element value rather than tracking the currentTime variable. Using currentTime will move the time position to itself
+    scrollTo() {
+      this.YTplayer.seekTo(document.getElementById("progressBar").value, true);
+    },
+
+    changeSong(song) {
+      console.log("changing song to " + song);
+      this.YTplayer.loadVideoById(song);
+    },
+
     playPause() {
-      this.playing = !this.playing;
-      this.playPauseGraphic = this.playing ? "IDzX9gL.png" : "quyUPXN.png";
+      // this.playing = !this.playing;
       this.YTplayer.getPlayerState() === YT.PlayerState.PLAYING ||
       this.YTplayer.getPlayerState() === YT.PlayerState.BUFFERING
         ? this.YTplayer.pauseVideo()
         : this.YTplayer.playVideo();
-      this.YTplayer.getPlayerState() === 1 ? this.stopProgressBar() : this.startProgressBar();
       // console.log("player state is: " + this.YTplayer.getPlayerState());
       // this.progressBar(this.YTplayer.getPlayerState());
+    },
+    playPauseGraphicChange() {
+      this.playPauseGraphic = this.YTplayer.getPlayerState() === 1 ? "IDzX9gL.png" : "quyUPXN.png";
     },
   },
   created: function () {
