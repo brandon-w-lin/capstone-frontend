@@ -71,14 +71,13 @@ export default {
         height: "0",
         width: "0",
         // videoId: e.dataset.video,
-        videoId: song,
+        videoId: song.YTExtension,
         playerVars: { autoplay: 1 },
         events: {
           onReady: () => {
-            console.log("hello from clickSong onReady event");
             this.YTplayer.setPlaybackQuality("small");
             this.playerIsReady = true;
-            console.log("this.playerIsReady: ", this.playerIsReady);
+            console.log("Music player is now ready: ", this.playerIsReady);
           },
           onStateChange: this.musicController,
           // onStateChange: function (e) {
@@ -128,10 +127,16 @@ export default {
     scrollTo() {
       this.YTplayer.seekTo(document.getElementById("progressBar").value, true);
     },
-    userSelectedSong(song) {
+    selectedSongController(song) {
       // check if the player is already created
-      console.log("pressed button from ", song);
-      this.playerIsReady ? console.log("player is ready") : console.log("player is not yet ready");
+      console.log("Selected song received in AudioComponent: ", song);
+      if (this.playerIsReady) {
+        console.log("Player is already created, so passing the song to changeSong method");
+        this.changeSong(song);
+      } else {
+        console.log("Music player is not yet created, so calling the onYoutubeIframeReady method");
+        this.onYouTubeIframeAPIReady(song);
+      }
     },
     changeSong(song) {
       console.log("changing song to " + song);
