@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="col card m-1">
-        Stuff about the song playing
-        <span>{{ currentSong }}</span>
+        <b>Now Playing:</b>
+        <span>{{ currentSong.title }}</span>
         <div class="slidecontainer">
           <span>{{ this.formattedCurrentTime }}</span>
           <input
@@ -31,7 +31,6 @@
           <span>{{ formatTime(this.duration) }}</span>
         </div>
       </div>
-      <button @click="changeSong(currentSong)">change song to {{ currentSong }}</button>
       <button @click="onYouTubeIframeAPIReady('wtHra9tFISY')">Make the player</button>
     </div>
   </div>
@@ -129,7 +128,7 @@ export default {
 
     changeSong(song) {
       console.log("changing song to " + song);
-      this.YTplayer.loadVideoById(song);
+      this.YTplayer.loadVideoById(song.YTExtension);
     },
 
     playPause() {

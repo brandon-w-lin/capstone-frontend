@@ -1,8 +1,9 @@
 <template>
   <NavBar />
 
-  <!-- ref is required for telling this.$refs which component holds the method that needs to be called whenever the other views emit the change-song event -->
-  <AudioComponent ref="audioComponent" />
+  <!-- ref is required for telling this.$refs which component holds the method that needs to be called whenever the other views emit the change-song event 
+  current-song is passing prop down to set the title of the song in the player -->
+  <AudioComponent ref="audioComponent" :current-song="currentSong" />
   <div class="container">
     <!-- @change-song is listening for whenever the changeSong event is emitted from the children in the router, and on that event calls the passChangeSong method here in the parent -->
     <router-view @change-song="passChangeSong" />
@@ -22,11 +23,14 @@ export default {
     // This method is called when one of the other views emits the changeSong event. The argument is listening for the payload emitted, so even though the @change-song="passChangeSong" does not contain an argument, it is required here.
     passChangeSong(song) {
       console.log("hello from /App, change song button was clicked from child page, sending: ", song);
+      // sets currentSong -> used as prop -> render song title in the AudioComponent
+      this.currentSong = song;
       this.$refs.audioComponent.changeSong(song);
     },
   },
   data() {
     return {
+      // sets title in AudioComponent
       currentSong: "",
     };
   },

@@ -41,7 +41,7 @@
             <a :href="'/songs/' + song.id" class="btn btn-primary">More Info</a>
 
             <!-- This button emits to /App.vue the changeSong event, along with the payload (song.YTExtension). That then triggers a method in the parent that calls back to a change song method in the AudioComponent. -->
-            <button @click="$emit('changeSong', song.YTExtension)">Play this song</button>
+            <button @click="$emit('changeSong', song)">Play this song</button>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
         </div>
