@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">Tunes For Tomes</a>
+      <router-link to="/" class="navbar-brand">WhileYouRead</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -16,16 +16,16 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <!-- <a class="nav-link active" aria-current="page" href="/">Home</a> -->
+            <router-link to="/" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/books">All Books</a>
+            <!-- <a class="nav-link" href="/books">All Books</a> -->
+            <router-link to="/books" class="nav-link">All Books</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/songs">All Songs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <!-- <a class="nav-link" href="/songs">All Songs</a> -->
+            <router-link to="/songs" class="nav-link">All Songs</router-link>
           </li>
         </ul>
         <form class="d-flex">
