@@ -25,7 +25,8 @@ export default {
       console.log("hello from /App, change song button was clicked from child page, sending: ", song);
       // sets currentSong -> used as prop -> render song title in the AudioComponent
       this.currentSong = song;
-      this.$refs.audioComponent.changeSong(song);
+      // this.$refs.audioComponent.changeSong(song);
+      this.$refs.audioComponent.userSelectedSong(song);
     },
   },
   data() {

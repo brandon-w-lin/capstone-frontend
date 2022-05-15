@@ -55,6 +55,7 @@ export default {
       playPauseGraphic: "quyUPXN.png",
       playing: false,
       YTplayer: {},
+      playerIsReady: false,
       duration: 0,
       currentTime: 0,
       formattedCurrentTime: 0,
@@ -65,7 +66,7 @@ export default {
   methods: {
     // Creates the youtube player from which the music will come
     onYouTubeIframeAPIReady(song) {
-      console.log("called onYouTubeIframeAPIReady for" + song);
+      console.log("called onYouTubeIframeAPIReady");
       this.YTplayer = new YT.Player("youtube-player", {
         height: "0",
         width: "0",
@@ -73,9 +74,11 @@ export default {
         videoId: song,
         playerVars: { autoplay: 1 },
         events: {
-          onReady: function () {
+          onReady: () => {
             console.log("hello from clickSong onReady event");
             this.YTplayer.setPlaybackQuality("small");
+            this.playerIsReady = true;
+            console.log("this.playerIsReady: ", this.playerIsReady);
           },
           onStateChange: this.musicController,
           // onStateChange: function (e) {
@@ -88,7 +91,7 @@ export default {
     },
     // Routes actions in the music player whenever the YT player state changes
     musicController() {
-      console.log(this.YTplayer.getPlayerState());
+      // console.log(this.YTplayer.getPlayerState());
       this.duration = this.YTplayer.getDuration();
       this.formattedDuration = this.formatTime(this.duration);
       this.playPauseGraphicChange();
@@ -125,7 +128,11 @@ export default {
     scrollTo() {
       this.YTplayer.seekTo(document.getElementById("progressBar").value, true);
     },
-
+    userSelectedSong(song) {
+      // check if the player is already created
+      console.log("pressed button from ", song);
+      this.playerIsReady ? console.log("player is ready") : console.log("player is not yet ready");
+    },
     changeSong(song) {
       console.log("changing song to " + song);
       this.YTplayer.loadVideoById(song.YTExtension);
