@@ -31,7 +31,6 @@
           <span>{{ formatTime(this.duration) }}</span>
         </div>
       </div>
-      <button @click="onYouTubeIframeAPIReady('wtHra9tFISY')">Make the player</button>
     </div>
   </div>
 </template>
