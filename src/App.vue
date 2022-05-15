@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       // sets title in AudioComponent
-      currentSong: "",
+      currentSong: {},
     };
   },
 };

@@ -46,7 +46,7 @@
 export default {
   name: "AudioComponent",
   props: {
-    currentSong: String,
+    currentSong: Object,
   },
   data: function () {
     return {
