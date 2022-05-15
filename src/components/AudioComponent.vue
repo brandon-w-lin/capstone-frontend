@@ -16,6 +16,7 @@
       </div>
       <div class="col card m-1">
         Stuff about the song playing
+        <span>{{ currentSong }}</span>
         <div class="slidecontainer">
           <span>{{ this.formattedCurrentTime }}</span>
           <input
@@ -30,7 +31,7 @@
           <span>{{ formatTime(this.duration) }}</span>
         </div>
       </div>
-      <button @click="changeSong('yB-c85V8Zsg')">change song</button>
+      <button @click="changeSong(currentSong)">change song to {{ currentSong }}</button>
       <button @click="onYouTubeIframeAPIReady('wtHra9tFISY')">Make the player</button>
     </div>
   </div>
@@ -44,6 +45,10 @@
 // import YT from "https://www.youtube.com/iframe_api";
 
 export default {
+  name: "AudioComponent",
+  props: {
+    currentSong: String,
+  },
   data: function () {
     return {
       song: {},
@@ -51,11 +56,6 @@ export default {
       playPauseGraphic: "quyUPXN.png",
       playing: false,
       YTplayer: {},
-      currentSong: {
-        YTExtension: "",
-        title: "test",
-        length: 100,
-      },
       duration: 0,
       currentTime: 0,
       formattedCurrentTime: 0,
@@ -68,8 +68,8 @@ export default {
     onYouTubeIframeAPIReady(song) {
       console.log("called onYouTubeIframeAPIReady for" + song);
       this.YTplayer = new YT.Player("youtube-player", {
-        height: "300",
-        width: "400",
+        height: "0",
+        width: "0",
         // videoId: e.dataset.video,
         videoId: song,
         playerVars: { autoplay: 1 },
@@ -101,6 +101,10 @@ export default {
       console.log("hello from startProgressBar");
       this.progressBar = setInterval(this.trackTime, 1000);
     },
+    stopProgressBar() {
+      console.log("hello from stopProgressBar");
+      clearInterval(this.progressBar);
+    },
     formatTime(input_seconds) {
       // Formatting for render on screen
       var dateObj = new Date(Math.floor(input_seconds * 1000));
@@ -118,12 +122,6 @@ export default {
       // document.getElementById("progressBar").value = this.currentTime;
       console.log(this.currentTime);
     },
-
-    stopProgressBar() {
-      console.log("hello from stopProgressBar");
-      clearInterval(this.progressBar);
-    },
-
     // Needs to get element value rather than tracking the currentTime variable. Using currentTime will move the time position to itself
     scrollTo() {
       this.YTplayer.seekTo(document.getElementById("progressBar").value, true);
