@@ -67,7 +67,7 @@ export default {
 
         // Then, pulls book data from the google books API
         response.data.forEach((book) => {
-          axios.get("https://www.googleapis.com/books/v1/volumes/" + book.googleID).then((response) => {
+          axios.get("https://www.googleapis.com/books/v1/volumes/" + book.google_book_extension).then((response) => {
             let temp = response.data.volumeInfo;
             temp.id = response.data.id;
             this.books.push(temp);
