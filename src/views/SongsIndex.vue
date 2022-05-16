@@ -6,43 +6,30 @@
     </div>
   </div>
 
-  <!-- cards not in use -->
-  <!-- <div class="row">
-      <div class="col-sm-4 mb-2" v-for="song in songs" :key="song.id">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ song.title }}</h5>
-            <p class="card-text">Brief blurb about the song</p>
-            <a :href="'/songs/' + song.id" class="btn btn-primary">More Info</a>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  <!-- <div class="card mb-3" style="max-width: 540px" v-for="song in songs" :key="song.id"> -->
-
-  <!-- cards in use -->
   <div class="row">
-    <div class="card m-3" style="max-width: 540px" v-for="song in songs" :key="song.id">
-      <div class="row g-0">
-        <div class="col-md-4 p-1 cover-image">
-          <!-- <img :src="song.cover_image_url" class="img-fluid rounded-start" alt="..." /> -->
-          <!-- Need to add cover to back end -->
-          <!-- <img :src="song" class="img-fluid img-thumbnail rounded-start" alt="..." /> -->
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ song.title }}</h5>
-            <p class="card-text">
-              <!-- {{ song.summary.substring(0, charLimit) + (song.summary.length > charLimit ? "..." : "") }} -->
-              Listen at:
-              <br />
-              <a :href="song.url">{{ song.url }}</a>
-            </p>
-            <a :href="'/songs/' + song.id" class="btn btn-primary">More Info</a>
+    <div class="col-6 p-3" v-for="song in songs" :key="song.id">
+      <div class="card">
+        <div class="row">
+          <!-- <div class="col-sm-4 p-1 cover-image">
+            <img
+              :src="
+                song.imageLinks
+                  ? song.imageLinks.thumbnail || Object.values(song.imageLinks).pop()
+                  : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
+              "
+              class="img-fluid img-thumbnail rounded-start"
+              alt=""
+            />
+          </div> -->
+          <div class="col-sm-8">
+            <div class="card-body text-left">
+              <h5 class="card-title">{{ song.title }}</h5>
 
-            <!-- This button emits to /App.vue the changeSong event, along with the payload (song.YTExtension). That then triggers a method in the parent that calls back to a change song method in the AudioComponent. -->
-            <button @click="$emit('changeSong', song)">Play this song</button>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <button @click="$emit('changeSong', song)" class="btn btn-primary">Play this song</button>
+
+              <router-link :to="/songs/ + song.id" class="btn btn-primary">More Info</router-link>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
           </div>
         </div>
       </div>
