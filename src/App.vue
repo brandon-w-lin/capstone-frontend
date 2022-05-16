@@ -7,7 +7,7 @@
     <!-- @change-song is listening for whenever the changeSong event is emitted from the children in the router, and on that event calls the passChangeSong method here in the parent -->
     <router-view @change-song="passChangeSong" />
   </div>
-  <AudioComponent class="sticky-bottom" ref="audioComponent" :current-song="currentSong" />
+  <AudioComponent class="fixed-bottom" ref="audioComponent" :current-song="currentSong" />
 </template>
 
 <script>
