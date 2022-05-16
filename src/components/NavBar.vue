@@ -30,12 +30,14 @@
         </ul>
         <form class="d-flex">
           <input
+            type="search"
+            @keyup.enter="search"
             v-model="searchQuery"
             class="form-control me-2"
-            type="search"
             placeholder="Search"
             aria-label="Search"
           />
+          <input type="search" @keyup.enter="onEnter" v-model="searchQuery" />
           <router-link class="btn btn-outline-success" :to="{ path: '/books/search', query: { q: searchQuery } }">
             Search
           </router-link>
@@ -53,9 +55,14 @@ export default {
     };
   },
   methods: {
-    search: function (query) {
-      console.log("testing query: ", "books/search" + query);
-      this.$router.push({ path: "/books/search", query: { q: query } });
+    onEnter() {
+      console.log("pressed enter");
+      this.$router.push({ path: "/books/search", query: { q: this.searchQuery } });
+    },
+    search() {
+      console.log("hello from search");
+      // console.log("testing query: ", "books/search" + this.searchQuery);
+      this.$router.push({ path: "/books/search", query: { q: this.searchQuery } });
     },
   },
 };
