@@ -1,41 +1,43 @@
 <template>
-  <div class="card">
-    <h1>Search results</h1>
-    <div class="card-body">
-      <a href="/books/submit" class="btn btn-primary">Submit a new book</a>
+  <div class="container">
+    <div class="card">
+      <h1>Search results</h1>
+      <div class="card-body">
+        <!-- <a href="/books/submit" class="btn btn-primary">Submit a new book</a> -->
+        <router-link to="books/submit" class="btn btn-primary">Submit a new book</router-link>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <!-- Padding added to the column before adding the card -->
-    <div class="col-6 p-3" v-for="book in results" :key="book.id">
-      <div class="card">
-        <div class="row">
-          <div class="col-sm-4 p-1 cover-image">
-            <img
-              :src="
-                book.volumeInfo.imageLinks
-                  ? Object.values(book.volumeInfo.imageLinks).pop()
-                  : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
-              "
-              class="img-fluid img-thumbnail rounded-start"
-              alt=""
-            />
-          </div>
-          <div class="col-sm-8">
-            <div class="card-body text-left">
-              <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
-              <h6 class="card-subtitle">
-                {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Author(s) unknown" }}
-              </h6>
-              <p
-                class="card-text"
-                style="height: 100px; text-overflow: ellipsis; overflow: hidden"
-                v-html="book.volumeInfo.description"
-              ></p>
-              <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
-
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <div class="row">
+      <!-- Padding added to the column before adding the card -->
+      <div class="col-6 p-3" v-for="book in results" :key="book.id">
+        <div class="card">
+          <div class="row">
+            <div class="col-sm-4 p-1 cover-image">
+              <img
+                :src="
+                  book.volumeInfo.imageLinks
+                    ? Object.values(book.volumeInfo.imageLinks).pop()
+                    : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
+                "
+                class="img-fluid img-thumbnail rounded-start"
+                alt=""
+              />
+            </div>
+            <div class="col-sm-8">
+              <div class="card-body text-left">
+                <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
+                <h6 class="card-subtitle">
+                  {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Author(s) unknown" }}
+                </h6>
+                <p
+                  class="card-text"
+                  style="height: 100px; text-overflow: ellipsis; overflow: hidden"
+                  v-html="book.volumeInfo.description"
+                ></p>
+                <router-link :to="/books/ + book.id" class="btn btn-primary">More info</router-link>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
             </div>
           </div>
         </div>
