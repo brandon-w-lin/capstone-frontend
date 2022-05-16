@@ -48,9 +48,14 @@
       <!-- Right side of page holding top songs -->
       <div class="col-sm-6 p-2">
         <div class="row card m-2 h2">Most played songs for {{ book.title }}</div>
-        <div class="row card m-2">Song 1</div>
-        <div class="row card m-2">Song 2</div>
-        <div class="row card m-2">Song 3</div>
+        <div v-for="song in songs" :key="song.YT_extension">
+          <div class="row card m-2">
+            {{ song.title }}
+
+            <button @click="$emit('changeSong', song)" class="btn btn-primary">Play this song</button>
+          </div>
+        </div>
+        <button @click="getSongs()">Get the songs</button>
       </div>
     </div>
   </div>
@@ -62,10 +67,13 @@
 import axios from "axios";
 
 export default {
+  emits: ["changeSong"],
   data: function () {
     return {
       apiResponse: {},
       book: {},
+      associated_songs: {},
+      songs: [],
     };
   },
   methods: {
@@ -85,9 +93,24 @@ export default {
         // this.book.description = this.book.description.setHTML();
       });
     },
+    getSongs: function () {
+      console.log("getting songs for: ", this.$route.params.id);
+      axios.get("http://localhost:3000/booksongs/book/" + this.$route.params.id).then((response) => {
+        console.log("Songs data received: ", response.data);
+        this.associated_songs = response.data;
+        response.data.forEach((song) => {
+          console.log("need to look up: ", song.YT_extension);
+          axios.get("http://localhost:3000/songs/id/" + song.YT_extension + ".json").then((response) => {
+            console.log(response.data);
+            this.songs.push(response.data);
+          });
+        });
+      });
+    },
   },
   created: function () {
     this.showBook();
+    this.getSongs();
   },
 };
 </script>
