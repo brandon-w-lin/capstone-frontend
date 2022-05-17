@@ -33,8 +33,7 @@
                 style="height: 100px; text-overflow: ellipsis; overflow: hidden"
                 v-html="book.description"
               ></p>
-              <a :href="'/books/' + book.id" class="btn btn-primary">More Info</a>
-
+              <router-link :to="/books/ + book.id" class="btn btn-primary">More Info</router-link>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
