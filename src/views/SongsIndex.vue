@@ -2,7 +2,7 @@
   <div class="card m-1">
     <h1>All songs</h1>
     <div class="card-body">
-      <a href="/songs/submit" class="btn btn-primary">Submit a new song</a>
+      <router-link to="/songs/submit" class="btn btn-primary">Submit a new song</router-link>
     </div>
   </div>
 
