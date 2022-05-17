@@ -3,6 +3,7 @@
     <h1>All books</h1>
     <div class="card-body">
       <a href="/books/submit" class="btn btn-primary">Submit a new book</a>
+      <router-link to="/books/submit" class="btn btn-primary">Submit a new book</router-link>
     </div>
   </div>
 
