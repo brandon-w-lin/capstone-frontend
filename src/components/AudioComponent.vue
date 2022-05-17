@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="col card m-1">
-        <b>Now Playing:</b>
-        <span>{{ currentSong.title }}</span>
+        <i v-if="currentSong.title">{{ currentSong.title }}</i>
+        <i v-else>No song selected</i>
         <div class="slidecontainer">
           <span>{{ this.formattedCurrentTime }}</span>
           <input
@@ -50,7 +50,7 @@ export default {
   data: function () {
     return {
       song: {},
-      YTExtension: "wtHra9tFISY",
+      YT_extension: "wtHra9tFISY",
       playPauseGraphic: "quyUPXN.png",
       playing: false,
       YTplayer: {},
@@ -70,7 +70,7 @@ export default {
         height: "0",
         width: "0",
         // videoId: e.dataset.video,
-        videoId: song.YTExtension,
+        videoId: song.YT_extension,
         playerVars: { autoplay: 1 },
         events: {
           onReady: () => {
@@ -139,7 +139,7 @@ export default {
     },
     changeSong(song) {
       console.log("changing song to " + song);
-      this.YTplayer.loadVideoById(song.YTExtension);
+      this.YTplayer.loadVideoById(song.YT_extension);
     },
 
     playPause() {
