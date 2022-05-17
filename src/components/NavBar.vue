@@ -37,7 +37,9 @@
             placeholder="Search"
             aria-label="Search"
           />
-          <input type="search" @keyup.enter="onEnter" v-model="searchQuery" />
+          <!-- The second input box is needed (but hidden) to v-model the searchQuery...for some reason whenever there is only one input box, the searchQuery variable will not remain populated when calling the search() method and pushing to the route. -->
+          <input v-show="false" v-model="searchQuery" />
+
           <router-link class="btn btn-outline-success" :to="{ path: '/books/search', query: { q: searchQuery } }">
             Search
           </router-link>
@@ -55,12 +57,8 @@ export default {
     };
   },
   methods: {
-    onEnter() {
-      console.log("pressed enter");
-      this.$router.push({ path: "/books/search", query: { q: this.searchQuery } });
-    },
     search() {
-      console.log("hello from search");
+      console.log("hello from search. Passing: ", this.searchQuery);
       // console.log("testing query: ", "books/search" + this.searchQuery);
       this.$router.push({ path: "/books/search", query: { q: this.searchQuery } });
     },
