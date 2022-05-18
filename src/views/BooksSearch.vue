@@ -33,7 +33,6 @@
                 ></p>
                 <router-link :to="/books/ + book.id" class="btn btn-primary">More info</router-link>
                 <button @click="addBook(book.id)" class="btn btn-primary">Add this book to our database</button>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
           </div>
