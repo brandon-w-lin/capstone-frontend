@@ -49,13 +49,11 @@
 
       <!-- Right side of page holding top songs -->
       <div class="col-sm-6 p-2">
-        <div class="row card m-2 h2">Most played songs for {{ book.title }}</div>
+        <div class="card m-2 h2">Most played songs for {{ book.title }}</div>
 
         <div v-for="song in songs" :key="song.YT_extension">
-          <div class="row card m-2">
-            {{ song.title }}
-
-            <button @click="$emit('changeSong', song)" class="btn btn-primary">Play this song</button>
+          <div class="card m-2">
+            <button @click="$emit('changeSong', song)" class="card btn btn-light">{{ song.title }}</button>
           </div>
         </div>
         <div v-if="!associated_songs_exist">
