@@ -16,17 +16,14 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="/">Home</a> -->
             <router-link to="/" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <!-- <a class="nav-link" href="/books">All Books</a> -->
             <router-link to="/books" class="nav-link">All Books</router-link>
           </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href="/songs">All Songs</a> -->
+          <!-- <li class="nav-item">
             <router-link to="/songs" class="nav-link">All Songs</router-link>
-          </li>
+          </li> -->
         </ul>
         <form class="d-flex">
           <input
@@ -34,7 +31,7 @@
             @keyup.enter="search(searchQuery)"
             v-model="searchQuery"
             class="form-control me-2"
-            placeholder="Search"
+            placeholder="Search books"
             aria-label="Search"
           />
           <!-- The second input box is needed (but hidden) to v-model the searchQuery...for some reason whenever there is only one input box, the searchQuery variable will not remain populated when calling the search() method and pushing to the route. -->
