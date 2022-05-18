@@ -38,10 +38,12 @@
 
         <!-- holds buttons -->
         <div class="card m-2">
-          <div class="row">
-            <div class="col">Back to all books</div>
-            <div class="col">Submit new song</div>
-          </div>
+          <router-link
+            class="btn btn-primary"
+            :to="{ path: '/songs/submit', query: { bookID: this.$route.params.id } }"
+          >
+            Submit a song
+          </router-link>
         </div>
       </div>
 
