@@ -3,9 +3,9 @@
 
   <!-- ref is required for telling this.$refs which component holds the method that needs to be called whenever the other views emit the change-song event 
     current-song is passing prop down to set the title of the song in the player -->
-  <div class="container" style="margin-top: 75px">
+  <div class="container" style="margin-top: 75px; margin-bottom: 150px">
     <!-- @change-song is listening for whenever the changeSong event is emitted from the children in the router, and on that event calls the passChangeSong method here in the parent -->
-    <router-view @change-song="passChangeSong" style="margin-bottom: 150px" />
+    <router-view @change-song="passChangeSong" />
   </div>
   <AudioComponent class="fixed-bottom" ref="audioComponent" :current-song="currentSong" />
 </template>
