@@ -40,7 +40,8 @@
               </button>
             </div>
             <div class="col-auto">
-              <button class="btn btn-primary">Add to book</button>
+              {{ song }}
+              <button class="btn btn-primary" @click="addSongToBook(song.id.videoId)">Add to book</button>
             </div>
             <div class="col">
               {{ song.snippet.title }}
@@ -96,6 +97,18 @@ export default {
     };
   },
   methods: {
+    addSongToBook(songID) {
+      axios
+        .post("http://localhost:3000/book_songs.json", {
+          google_book_extension: this.$route.query.bookID,
+          YT_extension: songID,
+        })
+        .then((response) => {
+          console.log("creating booksong association for book / song ID's: ", this.$route.query.bookID, songID);
+          console.log("response: ", response);
+        });
+      this.$router.push("/books/" + this.$route.query.bookID);
+    },
     searchSongs(searchQuery) {
       axios.get("http://localhost:3000/songs/search?q=" + searchQuery).then((response) => {
         console.log("Submitted request for youtube songs matching: ", searchQuery);
