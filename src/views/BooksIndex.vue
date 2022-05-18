@@ -1,5 +1,5 @@
 <template>
-  <div class="row card">
+  <div class="card m-1">
     <h1>All books</h1>
     <div class="card-body">
       <router-link to="/books/submit" class="btn btn-primary">Submit a new book</router-link>
