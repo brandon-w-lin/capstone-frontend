@@ -31,7 +31,7 @@
         <form class="d-flex">
           <input
             type="search"
-            @keyup.enter="search"
+            @keyup.enter="search(searchQuery)"
             v-model="searchQuery"
             class="form-control me-2"
             placeholder="Search"
@@ -57,10 +57,11 @@ export default {
     };
   },
   methods: {
-    search() {
-      console.log("hello from search. Passing: ", this.searchQuery);
+    search(searchQuery) {
+      console.log("hello from search. Passing: ", searchQuery);
       // console.log("testing query: ", "books/search" + this.searchQuery);
-      this.$router.push({ path: "/books/search", query: { q: this.searchQuery } });
+      this.$router.push({ path: "/books/search", query: { q: searchQuery } });
+      this.searchQuery = "";
     },
   },
 };
