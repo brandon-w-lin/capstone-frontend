@@ -75,6 +75,18 @@ export default {
   },
   created: function () {
     this.googleBooksSearch();
+    this.$watch(
+      // Allows the search results to change from same base route
+      () => this.$route.query,
+      (toQuery, previousQuery) => {
+        if (this.$route.name === "books-search" && toQuery != previousQuery) {
+          console.log("current route: ", this.$route);
+          console.log("old query: ", previousQuery);
+          console.log("new query: ", toQuery);
+          this.googleBooksSearch();
+        }
+      }
+    );
   },
 };
 </script>
