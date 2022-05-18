@@ -2,10 +2,6 @@
   <div class="container">
     <div class="card">
       <h1>Search results</h1>
-      <div class="card-body">
-        <!-- <a href="/books/submit" class="btn btn-primary">Submit a new book</a> -->
-        <router-link to="books/submit" class="btn btn-primary">Submit a new book</router-link>
-      </div>
     </div>
 
     <div class="row">
@@ -36,6 +32,7 @@
                   v-html="book.volumeInfo.description"
                 ></p>
                 <router-link :to="/books/ + book.id" class="btn btn-primary">More info</router-link>
+                <button @click="addBook(book.id)" class="btn btn-primary">Add this book to our database</button>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
@@ -68,12 +65,12 @@ export default {
         this.results = response.data.items;
       });
     },
-  },
-  watch: {
-    $route(to, from) {
-      if (to != from) {
-        this.googleBooksSearch();
-      }
+    addBook(bookID) {
+      console.log("attempting to add book :", bookID);
+      axios.post("http://localhost:3000/books.json", { google_book_extension: bookID }).then((response) => {
+        console.log("successfully submitted book", response.data);
+        // display a "success" message, then redirect
+      });
     },
   },
   created: function () {
