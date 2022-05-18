@@ -48,6 +48,7 @@
       <!-- Right side of page holding top songs -->
       <div class="col-sm-6 p-2">
         <div class="row card m-2 h2">Most played songs for {{ book.title }}</div>
+
         <div v-for="song in songs" :key="song.YT_extension">
           <div class="row card m-2">
             {{ song.title }}
@@ -55,7 +56,9 @@
             <button @click="$emit('changeSong', song)" class="btn btn-primary">Play this song</button>
           </div>
         </div>
-        <button @click="getSongs()">Get the songs</button>
+        <div v-if="!associated_songs_exist">
+          <div class="card m-2">Be the first to add a song!</div>
+        </div>
       </div>
     </div>
   </div>
@@ -74,6 +77,7 @@ export default {
       book: {},
       associated_songs: {},
       songs: [],
+      associated_songs_exist: true,
     };
   },
   methods: {
@@ -98,6 +102,7 @@ export default {
       axios.get("http://localhost:3000/booksongs/book/" + this.$route.params.id).then((response) => {
         console.log("Songs data received: ", response.data);
         this.associated_songs = response.data;
+        response.data.length === 0 ? (this.associated_songs_exist = false) : (this.associated_songs_exist = true);
         response.data.forEach((song) => {
           console.log("need to look up: ", song.YT_extension);
           axios.get("http://localhost:3000/songs/id/" + song.YT_extension + ".json").then((response) => {
