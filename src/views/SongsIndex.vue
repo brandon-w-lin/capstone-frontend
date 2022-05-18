@@ -27,8 +27,8 @@
 
               <button @click="$emit('changeSong', song)" class="btn btn-primary">Play this song</button>
 
-              <router-link :to="/songs/ + song.id" class="btn btn-primary">More Info</router-link>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <!-- <router-link :to="/songs/ + song.id" class="btn btn-primary">More Info</router-link> -->
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
             </div>
           </div>
         </div>
