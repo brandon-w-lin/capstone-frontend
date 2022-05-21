@@ -1,6 +1,11 @@
 <template>
   <div class="card m-1">
     <h1>All books</h1>
+    <p>
+      Don't see the book you are looking for? Use the
+      <b>search bar</b>
+      to find new books!
+    </p>
   </div>
 
   <div class="row">
