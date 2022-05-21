@@ -25,11 +25,6 @@
               <h6 class="card-subtitle">
                 {{ book.authors ? book.authors.join(", ") : "Author(s) unknown" }}
               </h6>
-              <p
-                class="card-text"
-                style="height: 100px; text-overflow: ellipsis; overflow: hidden"
-                v-html="book.description"
-              ></p>
               <router-link :to="/books/ + book.id" class="btn btn-primary">More Info</router-link>
               <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
             </div>
@@ -55,6 +50,10 @@ export default {
     };
   },
   methods: {
+    removeTags(string) {
+      string === null || string === "" ? false : (string = string.toString());
+      return string.replace(/(<([^>]+)>)/gi, "");
+    },
     getBooks: function () {
       // First pulls the indexed books from the local backend
       axios.get("http://localhost:3000/books.json").then((response) => {
