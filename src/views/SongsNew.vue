@@ -40,7 +40,6 @@
               </button>
             </div>
             <div class="col-auto">
-              {{ song }}
               <button class="btn btn-primary" @click="addSongToBook(song.id.videoId)">Add to book</button>
             </div>
             <div class="col">
