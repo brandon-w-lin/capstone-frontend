@@ -5,29 +5,27 @@
 
   <div class="row">
     <!-- Padding added to the column before adding the card -->
-    <div class="col-xl-4 col-lg-6 p-3" v-for="book in books" :key="book.id">
-      <div class="card book selected">
-        <!-- <div class="col-sm-4 cover-image"> -->
-        <img
-          :src="
-            book.imageLinks
-              ? book.imageLinks.thumbnail || Object.values(book.imageLinks).pop()
-              : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
-          "
-          class="img-fluid float-left zoom"
-          alt=""
-        />
-        <div>
-          <div class="card-body text-left">
-            <h5 class="card-title">{{ book.title }}</h5>
-            <h6 class="card-subtitle">
-              {{ book.authors ? book.authors.join(", ") : "Author(s) unknown" }}
-            </h6>
-            <router-link :to="/books/ + book.id" class="btn btn-primary">More Info</router-link>
-            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-          </div>
+    <div class="col-xxl-4 col-lg-6 p-3" v-for="book in books" :key="book.id">
+      <router-link :to="/books/ + book.id" class="card book selected">
+        <div class="img-container">
+          <img
+            :src="
+              book.imageLinks
+                ? book.imageLinks.thumbnail || Object.values(book.imageLinks).pop()
+                : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
+            "
+            class="img-fluid float-left zoom"
+            style="width: 100%; min-height: 100%"
+            alt=""
+          />
         </div>
-      </div>
+        <div class="content-container p-2 align-middle">
+          <h5 class="card-title">{{ book.title }}</h5>
+          <h6 class="card-subtitle">
+            {{ book.authors ? book.authors.join(", ") : "Author(s) unknown" }}
+          </h6>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -79,8 +77,14 @@ export default {
 .card {
   border: none;
 }
-.centered {
-  margin: 0 auto;
+
+.content-container {
+  width: 70%;
+  margin: auto;
+}
+
+.img-container {
+  width: 30%;
 }
 
 .img-container {
@@ -91,12 +95,15 @@ export default {
   flex-direction: row;
   height: 175px;
   overflow: hidden;
+  text-decoration: none;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.6);
-  transition: 0.4s;
+  transition: 0.5s, color 0.5s;
+  color: black;
 }
 
 .book:hover {
   box-shadow: 0px 0px 12px 2px rgba(172, 170, 244, 0.7);
+  color: #305376;
 }
 
 .book img {
