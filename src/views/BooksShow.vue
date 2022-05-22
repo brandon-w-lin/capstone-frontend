@@ -6,32 +6,30 @@
         <!-- holds book info -->
         <div class="card p-3 m-2">
           <!-- This row holds the picture and main book info -->
-          <div class="row mb-2">
+          <div class="row" id="book-info">
             <!-- Picture -->
-            <div class="col-auto">
-              <img :src="book.imageLinks.thumbnail" class="img-fluid img-thumbnail rounded-start" alt="..." />
+            <div class="img-container d-flex align-items-center">
+              <img :src="book.imageLinks.thumbnail" alt="book cover image" />
             </div>
 
             <!-- Book Info -->
-            <div class="col-auto text-left align-middle">
-              <div class="row card-subtitle text-muted">
-                <i>{{ book.subtitle }}</i>
-              </div>
-              <div class="row h1 card-title">
+            <div style="width: 70%">
+              <i>{{ book.subtitle }}</i>
+              <div class="h1 text-left">
                 {{ book.title }}
               </div>
-              <div class="row h3">{{ book.authors.join(", ") }}</div>
-              <div class="row">{{ book.publisher }}</div>
-              <div class="row">{{ book.publishedDate }}</div>
-              <div class="row">{{ book.categories[0] }}</div>
-              <div class="row" v-for="identifier in book.industryIdentifiers" :key="identifier.type">
+              <div class="h2">{{ book.authors.join(", ") }}</div>
+              <div>{{ book.publisher }}</div>
+              <div>{{ book.publishedDate }}</div>
+              <div>{{ book.categories[0] }}</div>
+              <div v-for="identifier in book.industryIdentifiers" :key="identifier.type">
                 {{ `${identifier.type}: ${identifier.identifier}` }}
               </div>
             </div>
           </div>
 
           <!-- Everything below the main book info (book description) -->
-          <div class="row">
+          <div class="row pt-3">
             <div class="col-auto" v-html="book.description"></div>
           </div>
         </div>
@@ -119,3 +117,19 @@ export default {
   },
 };
 </script>
+
+<style>
+#book-info {
+  flex-direction: row;
+}
+
+.img-container {
+  object-fit: cover;
+  align-items: center;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+</style>
