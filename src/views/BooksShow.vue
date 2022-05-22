@@ -28,6 +28,12 @@
             </div>
           </div>
 
+          <router-link
+            class="btn btn-primary my-3"
+            :to="{ path: '/songs/submit', query: { bookID: this.$route.params.id } }"
+          >
+            Submit a song
+          </router-link>
           <!-- Everything below the main book info (book description) -->
           <div class="row pt-3">
             <div class="col-auto" v-html="book.description"></div>
@@ -35,14 +41,7 @@
         </div>
 
         <!-- holds buttons -->
-        <div class="card m-2">
-          <router-link
-            class="btn btn-primary"
-            :to="{ path: '/songs/submit', query: { bookID: this.$route.params.id } }"
-          >
-            Submit a song
-          </router-link>
-        </div>
+        <div class="card m-2"></div>
       </div>
 
       <!-- Right side of page holding top songs -->
