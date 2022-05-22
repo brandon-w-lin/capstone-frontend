@@ -39,9 +39,6 @@
             <div class="col-auto" v-html="book.description"></div>
           </div>
         </div>
-
-        <!-- holds buttons -->
-        <div class="card m-2"></div>
       </div>
 
       <!-- Right side of page holding top songs -->
@@ -50,7 +47,13 @@
 
         <div v-for="song in songs" :key="song.YT_extension">
           <div class="card m-2">
-            <button @click="$emit('changeSong', song)" class="card btn btn-light">{{ song.title }}</button>
+            <button
+              @click="$emit('changeSong', song)"
+              class="btn"
+              :class="{ playing: song.YT_extension === currentSong.YT_extension }"
+            >
+              {{ song.title }}
+            </button>
           </div>
         </div>
         <div v-if="!associated_songs_exist">
@@ -68,6 +71,7 @@ import axios from "axios";
 
 export default {
   emits: ["changeSong"],
+  props: { currentSong: Object },
   data: function () {
     return {
       apiResponse: {},
