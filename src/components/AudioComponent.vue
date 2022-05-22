@@ -1,34 +1,47 @@
 <template>
-  <div class="container">
-    <div class="row p-2">
-      <div class="col-auto">
-        <div class="card m-1">
-          <div id="newplayer">
-            <img
-              :src="'http://i.imgur.com/' + playPauseGraphic"
-              @click="playPause()"
-              id="playPauseButton"
-              alt="Play/Pause Button"
-            />
-            <div id="youtube-player"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col card m-1">
-        <i v-if="currentSong.title">{{ currentSong.title }}</i>
-        <i v-else>No song selected</i>
-        <div class="slidecontainer">
-          <span>{{ this.formattedCurrentTime }}</span>
-          <input
-            type="range"
-            min="0"
-            :max="this.duration"
-            :value="currentTime"
-            class="slider"
-            id="progressBar"
-            @change="scrollTo()"
+  <div style="background: grey">
+    <div class="container">
+      <div class="row">
+        <!-- Navigation buttons -->
+        <div class="col-auto my-1 p-1 d-flex align-items-center">
+          <img
+            src="@/assets/skip-start-circle.svg"
+            id="skip-start-button"
+            alt="skip start button"
+            style="height: 40px"
           />
-          <span>{{ formatTime(this.duration) }}</span>
+        </div>
+        <div class="col-auto my-1 p-1 d-flex align-items-center">
+          <img
+            :src="playPauseGraphic"
+            @click="playPause()"
+            id="playPauseButton"
+            alt="Play/Pause Button"
+            style="height: 50px"
+          />
+        </div>
+        <div class="col-auto my-1 p-1 d-flex align-items-center">
+          <img src="@/assets/skip-end-circle.svg" id="skip-end-button" alt="skip end button" style="height: 40px" />
+          <div id="youtube-player"></div>
+        </div>
+
+        <!-- About and scroll -->
+        <div class="col-auto card m-1">
+          <i v-if="currentSong.title">{{ currentSong.title }}</i>
+          <i v-else>No song selected</i>
+          <div class="slidecontainer">
+            <span>{{ this.formattedCurrentTime }}</span>
+            <input
+              type="range"
+              min="0"
+              :max="this.duration"
+              :value="currentTime"
+              class="slider"
+              id="progressBar"
+              @change="scrollTo()"
+            />
+            <span>{{ formatTime(this.duration) }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -51,7 +64,7 @@ export default {
     return {
       song: {},
       YT_extension: "wtHra9tFISY",
-      playPauseGraphic: "quyUPXN.png",
+      playPauseGraphic: require("../assets/play-circle.svg"),
       playing: false,
       YTplayer: {},
       playerIsReady: false,
@@ -152,7 +165,10 @@ export default {
       // this.progressBar(this.YTplayer.getPlayerState());
     },
     playPauseGraphicChange() {
-      this.playPauseGraphic = this.YTplayer.getPlayerState() === 1 ? "IDzX9gL.png" : "quyUPXN.png";
+      this.playPauseGraphic =
+        this.YTplayer.getPlayerState() === 1
+          ? require("../assets/pause-circle.svg")
+          : require("../assets/play-circle.svg");
     },
   },
   created: function () {
