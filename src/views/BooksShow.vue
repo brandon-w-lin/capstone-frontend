@@ -46,7 +46,7 @@
 
       <!-- Right side of page holding top songs -->
       <div class="col-sm-6 p-2">
-        <div class="card m-2 h2">Most played songs for {{ book.title }}</div>
+        <div class="card p-3 m-2 h2">Most played songs</div>
 
         <div v-for="song in songs" :key="song.YT_extension">
           <div class="card m-2">
