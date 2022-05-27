@@ -1,5 +1,5 @@
 <template>
-  <div class="card m-1">
+  <div class="card m-1 text-center">
     <h1>All books</h1>
     <p>
       Don't see the book you are looking for? Use the
@@ -79,10 +79,6 @@ export default {
 </script>
 
 <style>
-.card {
-  border: none;
-}
-
 .content-container {
   width: 70%;
   margin: auto;
@@ -101,7 +97,6 @@ export default {
   height: 175px;
   overflow: hidden;
   text-decoration: none;
-  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.6);
   transition: 0.5s, color 0.5s;
   color: black;
 }
