@@ -66,13 +66,13 @@ export default {
       this.$router.push("/books/" + this.$route.params.id);
     },
     showBook: function () {
-      axios.get("http://localhost:3000/books/" + this.$route.params.id + ".json").then((response) => {
+      axios.get("/books/" + this.$route.params.id + ".json").then((response) => {
         console.log(response.data);
         this.book = response.data;
       });
     },
     editBook: function () {
-      axios.patch("http://localhost:3000/books/" + this.$route.params.id + ".json", this.book).then((response) => {
+      axios.patch("/books/" + this.$route.params.id + ".json", this.book).then((response) => {
         console.log("successfully updated book", response.data);
         this.book = response.data;
         // display a "success" message, then redirect
@@ -80,7 +80,7 @@ export default {
       this.redirectBooksShow();
     },
     deleteBook: function () {
-      axios.delete("http://localhost:3000/books/" + this.$route.params.id + ".json").then((response) => {
+      axios.delete("/books/" + this.$route.params.id + ".json").then((response) => {
         console.log("successfully deleted book", response.data);
         this.book = response.data;
         // display a "success" message, then redirect

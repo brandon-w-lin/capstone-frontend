@@ -100,13 +100,13 @@ export default {
     },
     getSongs: function () {
       console.log("getting songs for: ", this.$route.params.id);
-      axios.get("http://localhost:3000/booksongs/book/" + this.$route.params.id).then((response) => {
+      axios.get("/booksongs/book/" + this.$route.params.id).then((response) => {
         console.log("Songs data received: ", response.data);
         this.associated_songs = response.data;
         response.data.length === 0 ? (this.associated_songs_exist = false) : (this.associated_songs_exist = true);
         response.data.forEach((song) => {
           console.log("need to look up: ", song.YT_extension);
-          axios.get("http://localhost:3000/songs/id/" + song.YT_extension + ".json").then((response) => {
+          axios.get("/songs/id/" + song.YT_extension + ".json").then((response) => {
             console.log(response.data);
             this.songs.push(response.data);
           });

@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     createBook: function () {
-      axios.post("http://localhost:3000/books.json", this.book).then((response) => {
+      axios.post("/books.json", this.book).then((response) => {
         console.log("successfully submitted book", response.data);
         this.book = response.data;
         // display a "success" message, then redirect

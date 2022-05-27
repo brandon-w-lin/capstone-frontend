@@ -66,7 +66,7 @@ export default {
     },
     addBook(bookID) {
       console.log("attempting to add book :", bookID);
-      axios.post("http://localhost:3000/books.json", { google_book_extension: bookID }).then((response) => {
+      axios.post("/books.json", { google_book_extension: bookID }).then((response) => {
         console.log("successfully submitted book", response.data);
         // display a "success" message, then redirect
       });

@@ -62,13 +62,13 @@ export default {
       this.$router.push("/songs/" + this.$route.params.id);
     },
     showSong: function () {
-      axios.get("http://localhost:3000/songs/" + this.$route.params.id + ".json").then((response) => {
+      axios.get("/songs/" + this.$route.params.id + ".json").then((response) => {
         console.log(response.data);
         this.song = response.data;
       });
     },
     editSong: function () {
-      axios.patch("http://localhost:3000/songs/" + this.$route.params.id + ".json", this.song).then((response) => {
+      axios.patch("/songs/" + this.$route.params.id + ".json", this.song).then((response) => {
         console.log("successfully updated song", response.data);
         this.song = response.data;
         // display a "success" message, then redirect
@@ -76,7 +76,7 @@ export default {
       this.redirectsongsShow();
     },
     deleteSong: function () {
-      axios.delete("http://localhost:3000/songs/" + this.$route.params.id + ".json").then((response) => {
+      axios.delete("/songs/" + this.$route.params.id + ".json").then((response) => {
         console.log("successfully deleted song", response.data);
         this.song = response.data;
         // display a "success" message, then redirect

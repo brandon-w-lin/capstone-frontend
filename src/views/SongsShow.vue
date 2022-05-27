@@ -96,7 +96,7 @@ export default {
       this.$router.push("/songs/" + this.$route.params.id + "/edit");
     },
     showSong: function () {
-      axios.get("http://localhost:3000/songs/" + this.$route.params.id + ".json").then((response) => {
+      axios.get("/songs/" + this.$route.params.id + ".json").then((response) => {
         console.log(response.data);
         this.song = response.data;
         this.onYouTubeIframeAPIReady();

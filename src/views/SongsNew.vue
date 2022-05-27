@@ -98,7 +98,7 @@ export default {
   methods: {
     addSongToBook(songID) {
       axios
-        .post("http://localhost:3000/book_songs.json", {
+        .post("/book_songs.json", {
           google_book_extension: this.$route.query.bookID,
           YT_extension: songID,
         })
@@ -109,14 +109,14 @@ export default {
       this.$router.push("/books/" + this.$route.query.bookID);
     },
     searchSongs(searchQuery) {
-      axios.get("http://localhost:3000/songs/search?q=" + searchQuery).then((response) => {
+      axios.get("/songs/search?q=" + searchQuery).then((response) => {
         console.log("Submitted request for youtube songs matching: ", searchQuery);
         console.log(response.data);
         this.songSearchResponse = response.data;
       });
     },
     createSong: function () {
-      axios.post("http://localhost:3000/songs.json", this.song).then((response) => {
+      axios.post("/songs.json", this.song).then((response) => {
         console.log("successfully submitted song", response.data);
         this.song = response.data;
         // display a "success" message, then redirect

@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     getSongs: function () {
-      axios.get("http://localhost:3000/songs.json").then((response) => {
+      axios.get("/songs.json").then((response) => {
         console.log(response.data);
         this.songs = response.data;
       });

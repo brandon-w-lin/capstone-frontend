@@ -56,7 +56,7 @@ export default {
     },
     getBooks: function () {
       // First pulls the indexed books from the local backend
-      axios.get("http://localhost:3000/books.json").then((response) => {
+      axios.get("/books.json").then((response) => {
         console.log("books in my API: ", response.data);
         this.catalogued_books = response.data;
 
