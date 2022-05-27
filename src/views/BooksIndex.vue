@@ -1,11 +1,29 @@
 <template>
-  <div class="card m-1 text-center">
+  <div class="card p-3 m-1 text-center">
     <h1>All books</h1>
     <p>
       Don't see the book you are looking for? Use the
       <b>search bar</b>
       to find new books!
     </p>
+    <div class="d-lg-none">
+      <form class="d-flex">
+        <input
+          type="search"
+          @keyup.enter="search"
+          v-model="searchQuery"
+          class="form-control me-2"
+          placeholder="Search books"
+          aria-label="Search"
+        />
+        <!-- The second input box is needed (but hidden) to v-model the searchQuery...for some reason whenever there is only one input box, the searchQuery variable will not remain populated when calling the search() method and pushing to the route. -->
+        <input v-show="false" v-model="searchQuery" />
+
+        <router-link class="btn btn-outline-success" :to="{ path: '/books/search', query: { q: searchQuery } }">
+          Search
+        </router-link>
+      </form>
+    </div>
   </div>
 
   <div class="row">
