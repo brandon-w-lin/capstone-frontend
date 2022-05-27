@@ -46,13 +46,13 @@ export default {
   color: #2c3e50;
 }
 
-body {
-  height: 100%;
+.card {
+  border: none;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.6);
 }
 
-.sticky-bottom {
-  position: sticky;
-  bottom: 0;
+body {
+  height: 100%;
 }
 
 nav {
