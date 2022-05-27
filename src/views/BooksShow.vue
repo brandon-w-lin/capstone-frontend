@@ -41,24 +41,24 @@
         </div>
       </div>
 
-      <!-- Right side of page holding top songs -->
+      <!-- Top songs -->
       <div class="col-sm-6 p-2">
         <div class="card p-3 m-2 h2">Most played songs</div>
 
         <div v-for="song in songs" :key="song.YT_extension">
           <div class="card m-2" :class="{ playing: song.YT_extension === currentSong.YT_extension }">
-            <div class="row">
-              <div class="col-1">
-                <div v-if="song.YT_extension === currentSong.YT_extension">
-                  <img src="@/assets/music-note-beamed.svg" alt="" />
+            <button @click="$emit('changeSong', song)" class="btn w-100">
+              <div class="row">
+                <div class="col-1">
+                  <div v-if="song.YT_extension === currentSong.YT_extension" class="playing-icon">
+                    <img src="@/assets/music-note-beamed.svg" alt="Now playing icon" />
+                  </div>
+                </div>
+                <div class="col">
+                  {{ song.title }}
                 </div>
               </div>
-              <div class="col-11">
-                <button @click="$emit('changeSong', song)" class="btn w-100">
-                  {{ song.title }}
-                </button>
-              </div>
-            </div>
+            </button>
           </div>
         </div>
         <div v-if="!associated_songs_exist">
