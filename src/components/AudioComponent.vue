@@ -26,7 +26,7 @@
         </div>
 
         <!-- About and scroll -->
-        <div class="col-auto card m-1">
+        <div class="col m-1">
           <i v-if="currentSong.title">{{ currentSong.title }}</i>
           <i v-else>No song selected</i>
           <div class="slidecontainer">
