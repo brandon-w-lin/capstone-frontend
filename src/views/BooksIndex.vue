@@ -86,9 +86,6 @@ export default {
 
 .img-container {
   width: 30%;
-}
-
-.img-container {
   object-fit: cover;
 }
 
