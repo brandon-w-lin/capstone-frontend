@@ -46,14 +46,19 @@
         <div class="card p-3 m-2 h2">Most played songs</div>
 
         <div v-for="song in songs" :key="song.YT_extension">
-          <div class="card m-2">
-            <button
-              @click="$emit('changeSong', song)"
-              class="btn"
-              :class="{ playing: song.YT_extension === currentSong.YT_extension }"
-            >
-              {{ song.title }}
-            </button>
+          <div class="card m-2" :class="{ playing: song.YT_extension === currentSong.YT_extension }">
+            <div class="row">
+              <div class="col-1">
+                <div v-if="song.YT_extension === currentSong.YT_extension">
+                  <img src="@/assets/music-note-beamed.svg" alt="" />
+                </div>
+              </div>
+              <div class="col-11">
+                <button @click="$emit('changeSong', song)" class="btn w-100">
+                  {{ song.title }}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div v-if="!associated_songs_exist">
