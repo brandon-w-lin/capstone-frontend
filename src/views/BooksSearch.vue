@@ -6,37 +6,33 @@
 
     <div class="row">
       <!-- Padding added to the column before adding the card -->
-      <div class="col-6 p-3" v-for="book in results" :key="book.id">
-        <div class="card">
-          <div class="row">
-            <div class="col-sm-4 p-1 cover-image">
-              <img
-                :src="
-                  book.volumeInfo.imageLinks
-                    ? Object.values(book.volumeInfo.imageLinks).pop()
-                    : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
-                "
-                class="img-fluid img-thumbnail rounded-start"
-                alt=""
-              />
-            </div>
-            <div class="col-sm-8">
-              <div class="card-body text-left">
-                <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
-                <h6 class="card-subtitle">
-                  {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Author(s) unknown" }}
-                </h6>
-                <p
-                  class="card-text"
-                  style="height: 100px; text-overflow: ellipsis; overflow: hidden"
-                  v-html="book.volumeInfo.description"
-                ></p>
-                <router-link :to="/books/ + book.id" class="btn btn-primary">More info</router-link>
-                <button @click="addBook(book.id)" class="btn btn-primary">Add this book to our database</button>
-              </div>
-            </div>
+      <div class="col-lg-6 p-3" v-for="book in results" :key="book.id">
+        <router-link :to="/books/ + book.id" class="card book selected">
+          <div class="img-container">
+            <img
+              :src="
+                book.volumeInfo.imageLinks
+                  ? Object.values(book.volumeInfo.imageLinks).pop()
+                  : 'https://www.seekpng.com/png/full/96-965662_confused-travolta-pulp-fiction-side-john-travolta-confused.png'
+              "
+              class="img-fluid float-left zoom"
+              alt="book cover image"
+            />
           </div>
-        </div>
+          <div class="content-container p-2">
+            <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
+            <h6 class="card-subtitle">
+              {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Author(s) unknown" }}
+            </h6>
+
+            <p
+              class="card-text"
+              style="height: 100px; text-overflow: ellipsis; overflow: hidden"
+              v-html="book.volumeInfo.description"
+            ></p>
+          </div>
+        </router-link>
+        <div class="card"></div>
       </div>
     </div>
   </div>
