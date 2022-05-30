@@ -82,6 +82,24 @@
           </div> -->
       </div>
     </div>
+    <div class="card d-flex flex-row justify-content-center m-1 p-1" v-if="songSearchResponse.nextPageToken">
+      <div v-if="songSearchResponse.prevPageToken">
+        <button
+          class="btn btn-primary"
+          @click="searchSongs(searchQuery + '&pageToken=' + songSearchResponse.prevPageToken)"
+        >
+          Previous page
+        </button>
+      </div>
+      <div v-if="songSearchResponse.nextPageToken">
+        <button
+          class="btn btn-primary"
+          @click="searchSongs(searchQuery + '&pageToken=' + songSearchResponse.nextPageToken)"
+        >
+          Next page
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
