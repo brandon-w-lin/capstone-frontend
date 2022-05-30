@@ -34,9 +34,7 @@
             <img :src="song.snippet.thumbnails.default.url" alt="" />
           </div>
           <div class="content-container">
-            <div class="row m-1">
-              {{ song.snippet.title }}
-            </div>
+            <div class="row m-1" v-html="song.snippet.title"></div>
             <div class="row m-1">
               <div class="col-auto">
                 <button
