@@ -102,4 +102,37 @@ body {
     /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
   }
 }
+
+/* For styling book cards */
+.content-container {
+  width: 70%;
+  margin: auto;
+}
+
+.img-container {
+  width: 30%;
+  object-fit: cover;
+}
+
+.book {
+  flex-direction: row;
+  height: 175px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: 0.5s, color 0.5s;
+  color: black;
+}
+
+.book:hover {
+  box-shadow: 0px 0px 12px 2px rgba(172, 170, 244, 0.7);
+  color: #305376;
+}
+
+.book img {
+  transition: transform 0.2s;
+}
+
+.book:hover img {
+  transform: scale(1.1);
+}
 </style>
