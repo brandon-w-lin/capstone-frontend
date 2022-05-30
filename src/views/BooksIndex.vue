@@ -65,9 +65,17 @@ export default {
       // My API
       catalogued_books: [],
       charLimit: 200,
+
+      searchQuery: "",
     };
   },
   methods: {
+    search(searchQuery) {
+      console.log("hello from search. Passing: ", searchQuery);
+      // console.log("testing query: ", "books/search" + this.searchQuery);
+      this.$router.push({ path: "/books/search", query: { q: searchQuery } });
+      this.searchQuery = "";
+    },
     removeTags(string) {
       string === null || string === "" ? false : (string = string.toString());
       return string.replace(/(<([^>]+)>)/gi, "");
