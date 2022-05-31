@@ -46,30 +46,75 @@ export default {
   color: #2c3e50;
 }
 
-.card {
-  border: none;
-  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.6);
+/* color scheme */
+:root.opt1 {
+  --color1: #293241;
+  --color2: #3d5a80;
+  --color3: #98c1d9;
+  --color4: #e0fbfc;
+  --color5: #ee6c4d;
+  --bg-page: #0f0f10;
+  --bg-card: #303041;
+  --shadow: #000000;
+  --accent: #0ea2f6;
+  --font-high: #e0fbfce0;
+  --font-med: #e0fbfca2;
+  --font-low: #e0fbfc51;
+  --success: #0ea2f6;
+}
+
+:root.dark {
+  --color1: #0f0f10;
+  --color2: #303041;
+  --color3: #3d3a50;
+  --color4: #f4fcfe;
+  --color5: #0ea2f6;
+  --font-high: #f4fcfee0;
+  --font-med: #f4fcfea2;
+  --font-low: #f4fcfe51;
+}
+
+.brandon-button {
+  background-color: transparent;
+  color: var(--accent);
+  border: solid;
+  border-color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.brandon-button:hover {
+  background-color: var(--accent);
+  color: var(--font-high);
 }
 
 body {
-  height: 100%;
+  background-color: var(--bg-page);
 }
 
 nav {
   padding: 30px;
+  color: var(--font-high);
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--font-high);
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: var(--accent);
 }
 
-body {
-  background-color: #284b63;
+.card {
+  border: none;
+  background-color: var(--bg-card);
+  color: var(--font-high);
+  box-shadow: 0px 0px 4px 1px var(--shadow);
 }
 
 .cover-image {
@@ -78,7 +123,7 @@ body {
 }
 
 .playing {
-  background-color: orange;
+  background-color: var(--accent);
 }
 
 .playing-icon {
@@ -120,16 +165,16 @@ body {
   overflow: hidden;
   text-decoration: none;
   transition: 0.5s, color 0.5s;
-  color: black;
 }
 
 .book:hover {
-  box-shadow: 0px 0px 12px 2px rgba(172, 170, 244, 0.7);
-  color: #305376;
+  box-shadow: 0px 0px 12px 2px var(--accent);
+  color: var(--accent);
 }
 
 .book img {
   transition: transform 0.2s;
+  filter: saturate(0.87);
 }
 
 .book:hover img {
