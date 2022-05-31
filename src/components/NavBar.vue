@@ -27,11 +27,19 @@
         </ul>
         <button @click="changeTheme()">Change Theme</button>
         <form class="d-flex">
-          <input
+          <!-- <input
             type="search"
             @keyup.enter="search(searchQuery)"
             v-model="searchQuery"
             class="form-control me-2"
+            placeholder="Search books"
+            aria-label="Search"
+          /> -->
+          <input
+            type="search"
+            @keyup.enter="search(searchQuery)"
+            v-model="searchQuery"
+            class="brandon-form"
             placeholder="Search books"
             aria-label="Search"
           />

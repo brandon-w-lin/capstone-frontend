@@ -47,19 +47,20 @@ export default {
 
 /* color scheme */
 :root.opt1 {
-  --color1: #293241;
-  --color2: #3d5a80;
-  --color3: #98c1d9;
-  --color4: #e0fbfc;
-  --color5: #ee6c4d;
-  --bg-page: #0f0f10;
-  --bg-card: #303041;
-  --shadow: #000000;
-  --accent: #0ea2f6;
-  --font-high: #e0fbfce0;
+  --color1: #151515;
+  --color2: #202020;
+  --color3: #353535;
+  --color4: #dadada;
+  --color5: #125e57;
+  --color6: #12e0cc;
+  --bg-page: var(--color1);
+  --bg-card: var(--color2);
+  --shadow: var(--color2);
+  --accent: var(--color6);
+  --font-highest: #ffffff;
+  --font-high: #dadada;
   --font-med: #e0fbfca2;
   --font-low: #e0fbfc51;
-  --success: #0ea2f6;
 }
 
 :root.dark {
@@ -74,21 +75,38 @@ export default {
 }
 
 .brandon-button {
-  background-color: transparent;
-  color: var(--accent);
+  background-color: var(--color2);
+  color: var(--font-med);
   border: solid;
-  border-color: var(--accent);
+  border-color: var(--color2);
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  width: 200px;
+  width: 150px;
   border-radius: 5px;
+  margin: 0px 2px;
 }
 
 .brandon-button:hover {
-  background-color: var(--accent);
+  background-color: var(--color3);
   color: var(--font-high);
+}
+
+.brandon-form {
+  background-color: var(--bg-card);
+  color: var(--font-high);
+  outline: none;
+  border: var(--color3);
+}
+
+input:focus {
+  background-color: var(--color3);
+}
+
+::placeholder {
+  color: var(--font-low);
+  /* color: var(--font-low); */
 }
 
 body {
@@ -98,6 +116,7 @@ body {
 nav {
   padding: 30px;
   color: var(--font-high);
+  background-color: var(--bg-page);
 }
 
 nav a {
@@ -167,8 +186,9 @@ nav a.router-link-exact-active {
 }
 
 .book:hover {
-  box-shadow: 0px 0px 12px 2px var(--accent);
-  color: var(--accent);
+  /* box-shadow: 0px 0px 5px 2px var(--font-med); */
+  color: var(--font-highest);
+  background-color: var(--color3);
 }
 
 .book img {
@@ -177,6 +197,6 @@ nav a.router-link-exact-active {
 }
 
 .book:hover img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 </style>
