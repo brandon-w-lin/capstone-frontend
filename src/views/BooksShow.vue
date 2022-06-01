@@ -29,13 +29,13 @@
           </div>
 
           <router-link
-            class="btn btn-primary my-3"
+            class="brandon-button inline w-100 text-center py-1 my-3"
             :to="{ path: '/songs/submit', query: { bookID: this.$route.params.id } }"
           >
             Submit a song
           </router-link>
           <!-- Everything below the main book info (book description) -->
-          <div class="row pt-3">
+          <div class="row">
             <div class="col-auto" v-html="book.description"></div>
           </div>
         </div>

@@ -50,7 +50,7 @@ export default {
   --color1: #151515;
   --color2: #252525;
   --color3: #353535;
-  --color4: #dadada;
+  --color4: #505050;
   --color5: #125e57;
   --color6: #12e0cc;
   --bg-page: var(--color1);
@@ -89,6 +89,17 @@ export default {
 .brandon-button:hover {
   background-color: var(--color3);
   color: var(--font-high);
+}
+
+.brandon-button.inline {
+  background-color: var(--color3);
+  border-color: var(--color3);
+  color: var(--font-high);
+}
+
+.brandon-button.inline:hover {
+  background-color: var(--color4);
+  color: var(--font-highest);
 }
 
 .brandon-form {
