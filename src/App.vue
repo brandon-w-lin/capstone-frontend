@@ -48,14 +48,14 @@ export default {
 /* color scheme */
 :root.opt1 {
   --color1: #151515;
-  --color2: #202020;
+  --color2: #252525;
   --color3: #353535;
   --color4: #dadada;
   --color5: #125e57;
   --color6: #12e0cc;
   --bg-page: var(--color1);
   --bg-card: var(--color2);
-  --shadow: var(--color2);
+  --shadow: transparent;
   --accent: var(--color6);
   --font-highest: #ffffff;
   --font-high: #dadada;
@@ -79,13 +79,11 @@ export default {
   color: var(--font-med);
   border: solid;
   border-color: var(--color2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-decoration: none;
-  width: 150px;
+
   border-radius: 5px;
   margin: 0px 2px;
+  padding: 0px 10px;
 }
 
 .brandon-button:hover {
