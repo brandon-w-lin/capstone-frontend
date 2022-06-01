@@ -46,8 +46,12 @@
         <div class="card p-3 m-2 h2">Most played songs</div>
 
         <div v-for="song in songs" :key="song.YT_extension">
-          <div class="card m-2" :class="{ playing: song.YT_extension === currentSong.YT_extension }">
-            <button @click="$emit('changeSong', song)" class="btn w-100">
+          <div class="card m-2">
+            <button
+              @click="$emit('changeSong', song)"
+              class="brandon-button w-100"
+              :style="[song.YT_extension === currentSong.YT_extension ? 'color: var(--color6);' : 'color: inherit;']"
+            >
               <div class="row">
                 <div class="col-1">
                   <div v-if="song.YT_extension === currentSong.YT_extension" class="playing-icon">
