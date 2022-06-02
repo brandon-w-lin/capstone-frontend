@@ -3,7 +3,7 @@
 
   <!-- ref is required for telling this.$refs which component holds the method that needs to be called whenever the other views emit the change-song event 
     current-song is passing prop down to set the title of the song in the player -->
-  <div class="container" style="margin-top: 75px; margin-bottom: 150px">
+  <div style="margin-top: 60px; margin-bottom: 150px">
     <!-- @change-song is listening for whenever the changeSong event is emitted from the children in the router, and on that event calls the passChangeSong method here in the parent -->
     <router-view @change-song="passChangeSong" :current-song="currentSong" />
   </div>
@@ -47,35 +47,29 @@ export default {
 
 /* color scheme */
 :root.opt1 {
-  --color1: #151515;
-  --color2: #252525;
-  --color3: #353535;
-  --color4: #505050;
-  --color5: #125e57;
-  --color6: #12e0cc;
-  --bg-page: var(--color1);
-  --bg-card: var(--color2);
+  --neutral-1: #151515;
+  --neutral-2: #252525;
+  --neutral-3: #353535;
+  --neutral-4: #505050;
+  --color1-1: #0e3733;
+  --color1-2: #125e57;
+  --color1-3: #12877c;
+  --color1-4: #13b1a4;
+  --color1-5: #12e0cc;
+  --color2-1: #001220;
+  --color2-2: #002038;
+  --bg-page: var(--neutral-1);
+  --bg-card: var(--neutral-2);
   --shadow: transparent;
-  --accent: var(--color6);
+  --accent: var(--color1-5);
   --font-highest: #ffffff;
-  --font-high: #dadada;
+  --font-high: #e0fbfc;
   --font-med: #e0fbfca2;
   --font-low: #e0fbfc51;
 }
 
-:root.dark {
-  --color1: #0f0f10;
-  --color2: #303041;
-  --color3: #3d3a50;
-  --color4: #f4fcfe;
-  --color5: #0ea2f6;
-  --font-high: #f4fcfee0;
-  --font-med: #f4fcfea2;
-  --font-low: #f4fcfe51;
-}
-
 .brandon-button {
-  background-color: var(--color2);
+  background-color: var();
   color: var(--font-med);
   border: solid;
   border-color: var(--color2);
@@ -109,8 +103,19 @@ export default {
   border: var(--color3);
 }
 
-input:focus {
+.brandon-form.inline {
   background-color: var(--color3);
+  color: var(--font-highest);
+  outline: none;
+  border: var(--color4);
+}
+
+.brandon-form:focus {
+  background-color: var(--color3);
+}
+
+.brandon-form.inline:focus {
+  background-color: var(--color4);
 }
 
 ::placeholder {
