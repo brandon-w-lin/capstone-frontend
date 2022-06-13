@@ -25,7 +25,7 @@
             <router-link to="/songs" class="nav-link">All Songs</router-link>
           </li> -->
         </ul>
-        <button @click="changeTheme()">Change Theme</button>
+        <!-- <button @click="changeTheme()">Change Theme</button> -->
         <form class="d-flex">
           <!-- <input
             type="search"
