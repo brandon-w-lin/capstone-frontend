@@ -171,12 +171,6 @@ export default {
           : require("../assets/play-circle.svg");
     },
   },
-  created: function () {
-    // this.showSong();
-  },
-  mounted: function () {
-    // this.onYouTubeIframeAPIReady();
-  },
 };
 </script>
 
