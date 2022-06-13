@@ -29,7 +29,7 @@
     <div class="row">
       <!-- Padding added to the column before adding the card -->
       <div class="col-xl-6 p-3" v-for="song in songSearchResponse.items" :key="song.id.videoId">
-        <div class="card song">
+        <div class="card yt-song">
           <div class="img-container">
             <img :src="song.snippet.thumbnails.default.url" alt="" />
           </div>
@@ -159,12 +159,12 @@ export default {
 </script>
 
 <style>
-.song {
+.yt-song {
   flex-direction: row;
   height: 90px;
 }
 
-.song .img-container {
+.yt-song .img-container {
   width: 20%; /* if changing, need to also adjust in content-container */
   background-color: black;
   overflow: hidden;
@@ -172,14 +172,14 @@ export default {
   align-items: center;
 }
 
-.song .img-container img {
+.yt-song .img-container img {
   display: flex;
   max-height: 100%;
   width: auto;
   max-width: 100%;
   margin: auto;
 }
-.song .content-container {
+.yt-song .content-container {
   width: 80%; /* if changing, need to also adjust in img-container */
   white-space: nowrap;
   text-overflow: ellipsis;
