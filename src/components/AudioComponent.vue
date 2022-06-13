@@ -1,27 +1,43 @@
 <template>
-  <div style="background: grey">
+  <div id="player">
     <div class="container">
       <div class="row">
         <!-- Navigation buttons -->
         <div class="col-auto my-1 p-1 d-flex align-items-center">
-          <img
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16" class="clickable">
+            <path
+              d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0V4z"
+            />
+          </svg>
+          <!-- <img
             src="@/assets/skip-start-circle.svg"
             id="skip-start-button"
             alt="skip start button"
             style="height: 40px"
-          />
+          /> -->
         </div>
         <div class="col-auto my-1 p-1 d-flex align-items-center">
-          <img
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16" class="clickable">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"
+            />
+          </svg>
+          <!-- <img
             :src="playPauseGraphic"
             @click="playPause()"
             id="playPauseButton"
             alt="Play/Pause Button"
             style="height: 50px"
-          />
+          /> -->
         </div>
         <div class="col-auto my-1 p-1 d-flex align-items-center">
-          <img src="@/assets/skip-end-circle.svg" id="skip-end-button" alt="skip end button" style="height: 40px" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16" class="clickable">
+            <path
+              d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0V4z"
+            />
+          </svg>
+          <!-- <img src="@/assets/skip-end-circle.svg" id="skip-end-button" alt="skip end button" style="height: 40px" /> -->
           <div id="youtube-player"></div>
         </div>
 
@@ -175,8 +191,16 @@ export default {
 </script>
 
 <style>
-#playPauseButton {
+#player {
+  background-color: var(--neutral-2);
+}
+
+.clickable {
   cursor: pointer;
   cursor: hand;
+  fill: var(--font-high);
+}
+.clickable:hover {
+  fill: var(--color1-5);
 }
 </style>
