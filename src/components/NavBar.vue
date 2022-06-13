@@ -81,3 +81,19 @@ export default {
   },
 };
 </script>
+
+<style>
+.navbar-brand,
+.nav-link {
+  color: var(--font-high);
+}
+
+.navbar-brand:hover,
+.navbar-brand:active,
+.navbar-brand:focus,
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus {
+  color: var(--color1-5);
+}
+</style>
