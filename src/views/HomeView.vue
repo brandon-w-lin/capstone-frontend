@@ -23,8 +23,13 @@
           </router-link>
         </form>
       </div>
+      <div class="m-1">
+        <input type="checkbox" id="chkBox-SearchBooksWithSongs" />
+        <label for="chkBox-SearchBooksWithSongs">Include books that do not yet have songs</label>
+      </div>
     </div>
   </div>
+  <div class="divider1"></div>
   <div id="body">
     <div class="container">place a carousel here</div>
   </div>
@@ -57,10 +62,13 @@ export default {
 </script>
 
 <style>
-#header {
+.divider1 {
   background-image: url(@/assets/layered-waves-haikei.svg);
   background-size: 100% 100%;
-  height: 400px;
+  height: 300px;
+}
+
+#header {
   color: var(--font-high);
 }
 
@@ -88,6 +96,7 @@ export default {
 #homepage-search-form:focus {
   background-color: var(--font-high);
   color: var(--color2-1);
+  border: none;
 }
 
 #homepage-search-button {
