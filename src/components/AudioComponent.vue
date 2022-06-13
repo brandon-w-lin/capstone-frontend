@@ -17,12 +17,26 @@
           /> -->
         </div>
         <div class="col-auto my-1 p-1 d-flex align-items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16" class="clickable">
+          <!-- <div v-if="this.YTplayer.getPlayerState() === 1">testing</div>
+          <div v-else>else hit</div> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 16 16"
+            class="clickable"
+            @click="playPause()"
+          >
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path :d="playPauseGraphic" />
+          </svg>
+
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16" class="clickable">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
             <path
               d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"
             />
-          </svg>
+          </svg> -->
           <!-- <img
             :src="playPauseGraphic"
             @click="playPause()"
@@ -80,7 +94,8 @@ export default {
     return {
       song: {},
       YT_extension: "wtHra9tFISY",
-      playPauseGraphic: require("../assets/play-circle.svg"),
+      playPauseGraphic:
+        "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
       playing: false,
       YTplayer: {},
       playerIsReady: false,
@@ -89,6 +104,10 @@ export default {
       formattedCurrentTime: 0,
       formattedDuration: 0,
       progressBar: 0,
+      path_play:
+        "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
+      path_pause:
+        "M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5z",
     };
   },
   methods: {
@@ -181,10 +200,7 @@ export default {
       // this.progressBar(this.YTplayer.getPlayerState());
     },
     playPauseGraphicChange() {
-      this.playPauseGraphic =
-        this.YTplayer.getPlayerState() === 1
-          ? require("../assets/pause-circle.svg")
-          : require("../assets/play-circle.svg");
+      this.playPauseGraphic = this.YTplayer.getPlayerState() === 1 ? this.path_pause : this.path_play;
     },
   },
 };
