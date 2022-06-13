@@ -29,7 +29,7 @@
           </div>
 
           <router-link
-            class="brandon-button inline w-100 text-center py-1 my-3"
+            class="button-outline inline w-100 text-center py-1 my-3"
             :to="{ path: '/songs/submit', query: { bookID: this.$route.params.id } }"
           >
             Submit a song
@@ -46,11 +46,10 @@
         <div class="card p-3 m-2 h2">Most played songs</div>
 
         <div v-for="song in songs" :key="song.YT_extension">
-          <div class="card m-2">
+          <div class="card song m-2">
             <button
               @click="$emit('changeSong', song)"
-              class="brandon-button w-100"
-              :style="[song.YT_extension === currentSong.YT_extension ? 'color: var(--color6);' : 'color: inherit;']"
+              :class="song.YT_extension === currentSong.YT_extension ? 'button-no-format playing' : 'button-no-format'"
             >
               <div class="row">
                 <div class="col-1">
@@ -61,7 +60,7 @@
                       height="16"
                       class="bi bi-music-note-beamed"
                       viewBox="0 0 16 16"
-                      fill="var(--color6)"
+                      fill="var(--color1-5)"
                     >
                       <path
                         d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z"

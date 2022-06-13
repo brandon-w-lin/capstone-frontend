@@ -72,6 +72,15 @@ export default {
   --font-low: #e0fbfc51;
 }
 
+.button-no-format {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  margin: 0px 2px;
+  padding: 5px 25px;
+  color: inherit;
+}
+
 .button-outline {
   background-color: transparent;
   color: var(--color1-5);
@@ -160,7 +169,8 @@ nav a.router-link-exact-active {
 }
 
 .playing {
-  background-color: var(--accent);
+  /* background-color: var(--color1-5); */
+  color: var(--color1-5);
 }
 
 .playing-icon {
@@ -218,5 +228,17 @@ nav a.router-link-exact-active {
 
 .book:hover img {
   transform: scale(1.05);
+}
+
+.song {
+  background-color: var(--bg-card);
+  overflow: hidden;
+  text-decoration: none;
+  transition: 0.5s, color 0.5s;
+}
+
+.song:hover {
+  color: var(--font-highest);
+  background-color: var(--bg-card-hover);
 }
 </style>
