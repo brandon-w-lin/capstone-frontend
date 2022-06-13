@@ -39,7 +39,7 @@
             type="search"
             @keyup.enter="search(searchQuery)"
             v-model="searchQuery"
-            class="brandon-form"
+            class="form-main"
             placeholder="Search books"
             aria-label="Search"
           />
@@ -47,7 +47,7 @@
           <input v-show="false" v-model="searchQuery" />
 
           <!-- <router-link class="btn btn-outline-success" :to="{ path: '/books/search', query: { q: searchQuery } }"> -->
-          <router-link class="brandon-button" :to="{ path: '/books/search', query: { q: searchQuery } }">
+          <router-link class="button-outline" :to="{ path: '/books/search', query: { q: searchQuery } }">
             Search
           </router-link>
         </form>
