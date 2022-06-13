@@ -57,7 +57,7 @@
 
         <!-- About and scroll -->
         <div class="col m-1">
-          <i v-if="currentSong.title">{{ currentSong.title }}</i>
+          <i v-if="currentSong.title" v-html="currentSong.title"></i>
           <i v-else>No song selected</i>
           <div class="slidecontainer">
             <span>{{ this.formattedCurrentTime }}</span>
@@ -218,5 +218,63 @@ export default {
 }
 .clickable:hover {
   fill: var(--color1-5);
+}
+
+/* *********************** */
+/* Range slider formatting */
+/* *********************** */
+
+/* Styles needed to override basic appearance for range slider */
+
+input[type="range"] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    overflow: hidden;
+    width: 80%;
+    -webkit-appearance: none;
+    background-color: var(--neutral-3);
+    border-radius: 5px;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: var(--neutral-3);
+    margin-top: 0px; /* margin-top = (track height in pixels / 2) - (thumb height in pixels /2) */
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 50%;
+    cursor: ew-resize;
+    background: var(--color1-5);
+    box-shadow: calc(-80vw - 5px) 0 0 80vw var(--color1-5);
+  }
 }
 </style>
