@@ -61,8 +61,8 @@ export default {
   data: function () {
     return {
       searchQuery: "",
-      theme: "dark",
-      themes: ["opt1", "opt2", "opt3", "dark"],
+      // theme: "dark",
+      // themes: ["opt1", "opt2", "opt3", "dark"],
     };
   },
   methods: {
@@ -72,12 +72,12 @@ export default {
       this.$router.push({ path: "/books/search", query: { q: searchQuery } });
       this.searchQuery = "";
     },
-    changeTheme() {
-      console.log(this.themes.indexOf(this.theme));
-      var next = this.themes.indexOf(this.theme) == this.themes.length - 1 ? 0 : this.themes.indexOf(this.theme) + 1;
-      this.theme = this.themes[next];
-      document.documentElement.className = this.theme;
-    },
+    // changeTheme() {
+    //   console.log(this.themes.indexOf(this.theme));
+    //   var next = this.themes.indexOf(this.theme) == this.themes.length - 1 ? 0 : this.themes.indexOf(this.theme) + 1;
+    //   this.theme = this.themes[next];
+    //   document.documentElement.className = this.theme;
+    // },
   },
 };
 </script>

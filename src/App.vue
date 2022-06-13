@@ -47,7 +47,8 @@ export default {
 }
 
 /* color scheme */
-:root.opt1 {
+
+:root {
   --neutral-1: #151515;
   --neutral-2: #252525;
   --neutral-3: #353535;
