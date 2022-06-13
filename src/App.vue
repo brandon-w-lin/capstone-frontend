@@ -43,6 +43,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--font-high);
 }
 
 /* color scheme */
@@ -57,9 +58,12 @@ export default {
   --color1-4: #13b1a4;
   --color1-5: #12e0cc;
   --color2-1: #001220;
-  --color2-2: #002038;
+  --color2-2: #112837e7;
   --bg-page: var(--neutral-1);
   --bg-card: var(--neutral-2);
+  --bg-card-hover: var(--color1-3);
+  --bg-form: var(--font-med);
+  --bg-form-focus: var(--font-high);
   --shadow: transparent;
   --accent: var(--color1-5);
   --font-highest: #ffffff;
@@ -68,60 +72,62 @@ export default {
   --font-low: #e0fbfc51;
 }
 
-.brandon-button {
-  background-color: var();
-  color: var(--font-med);
+.button-outline {
+  background-color: transparent;
+  color: var(--color1-5);
   border: solid;
-  border-color: var(--color2);
-  text-decoration: none;
-
+  border-color: var(--color1-4);
   border-radius: 5px;
+  text-decoration: none;
   margin: 0px 2px;
-  padding: 0px 10px;
+  padding: 5px 25px;
 }
 
-.brandon-button:hover {
-  background-color: var(--color3);
+.button-outline:hover {
+  border-color: var(--font-high);
   color: var(--font-high);
 }
 
-.brandon-button.inline {
-  background-color: var(--color3);
-  border-color: var(--color3);
+.form-main {
+  background-color: var(--font-med);
+  width: 50%;
+  padding: 5px;
+}
+.form-main::placeholder {
   color: var(--font-high);
 }
 
-.brandon-button.inline:hover {
-  background-color: var(--color4);
-  color: var(--font-highest);
+.form-main:focus {
+  background-color: var(--font-high);
+  color: var(--color2-1);
+  border: none;
 }
-
-.brandon-form {
+/* .wyr-form {
   background-color: var(--bg-card);
   color: var(--font-high);
   outline: none;
   border: var(--color3);
 }
 
-.brandon-form.inline {
+.wyr-form.inline {
   background-color: var(--color3);
   color: var(--font-highest);
   outline: none;
   border: var(--color4);
 }
 
-.brandon-form:focus {
+.wyr-form:focus {
   background-color: var(--color3);
 }
 
-.brandon-form.inline:focus {
+.wyr-form.inline:focus {
   background-color: var(--color4);
 }
 
 ::placeholder {
   color: var(--font-low);
-  /* color: var(--font-low); */
-}
+  /* color: var(--font-low); 
+} */
 
 body {
   background-color: var(--bg-page);
@@ -146,7 +152,6 @@ nav a.router-link-exact-active {
   border: none;
   background-color: var(--bg-card);
   color: var(--font-high);
-  box-shadow: 0px 0px 4px 1px var(--shadow);
 }
 
 .cover-image {
@@ -197,12 +202,13 @@ nav a.router-link-exact-active {
   overflow: hidden;
   text-decoration: none;
   transition: 0.5s, color 0.5s;
+  /* box-shadow: 0px 0px 4px 2px var(--color1-2); */
 }
 
 .book:hover {
   /* box-shadow: 0px 0px 5px 2px var(--font-med); */
   color: var(--font-highest);
-  background-color: var(--color3);
+  background-color: var(--bg-card-hover);
 }
 
 .book img {
