@@ -30,10 +30,14 @@
     </div>
   </div>
   <div class="divider1"></div>
-  <div id="body">
-    <div class="container">place a carousel here</div>
+  <div id="how-does-it-work">
+    <div class="container">
+      <h2>How does it work?</h2>
+      insert video here
+    </div>
   </div>
-  <div id="footer" class="absolute-bottom">
+  <div class="divider2"></div>
+  <div class="absolute-bottom">
     <div class="container">About | Contact me</div>
   </div>
 </template>
@@ -63,25 +67,20 @@ export default {
 
 <style>
 .divider1 {
-  background-image: url(@/assets/layered-waves-haikei.svg);
+  background-image: url(@/assets/layered-waves-haikei-dark-to-green.svg);
   background-size: 100% 100%;
   height: 300px;
 }
 
-#header {
-  color: var(--font-high);
+.divider2 {
+  background-image: url(@/assets/layered-waves-haikei-green-to-dark.svg);
+  background-size: 100% 100%;
+  height: 200px;
 }
 
-#body {
+#how-does-it-work {
   background-color: var(--color1-2);
-  color: var(--font-highest);
-  height: 50vh;
-}
-
-#footer {
-  background-color: var(--color1-2);
-  color: var(--font-highest);
-  height: 20vh;
+  height: 300px;
 }
 
 #homepage-search-form {
