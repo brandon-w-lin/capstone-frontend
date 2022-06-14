@@ -3,7 +3,7 @@
     <div class="container">
       <router-link to="/" class="navbar-brand">WhileYouRead</router-link>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler custom-toggler"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarTogglerDemo02"
@@ -11,7 +11,17 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path
+              stroke="var(--color1-5)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              d="M4 8h24M4 16h24M4 24h24"
+            ></path>
+          </svg>
+        </span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -87,7 +97,6 @@ export default {
 .nav-link {
   color: var(--font-high);
 }
-
 .navbar-brand:hover,
 .navbar-brand:active,
 .navbar-brand:focus,
@@ -95,5 +104,9 @@ export default {
 .nav-link:active,
 .nav-link:focus {
   color: var(--color1-5);
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: var(--color1-5);
 }
 </style>
