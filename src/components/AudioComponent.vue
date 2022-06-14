@@ -69,16 +69,21 @@ export default {
   },
   data: function () {
     return {
-      playPauseGraphic:
-        "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
       playing: false,
       YTplayer: {},
       playerIsReady: false,
+
+      // Data used in progress bar
       duration: 0,
       currentTime: 0,
       formattedCurrentTime: 0,
       formattedDuration: 0,
       progressBar: 0,
+
+      // Play/pause controls
+      // Set to the play button by default
+      playPauseGraphic:
+        "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
       path_play:
         "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
       path_pause:
