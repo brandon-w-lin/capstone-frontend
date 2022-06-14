@@ -1,10 +1,19 @@
 <template>
   <div id="player">
     <div class="container">
-      <div class="collapse" id="collapseWidthExample">
-        <div class="card card-body" style="width: 300px">
-          <div v-for="song in upNext" :key="song.YT_extension">
-            {{ song.title }}
+      <div class="collapse" id="collapseUpNext">
+        <div class="card p-2">
+          <div v-if="upNext.length == 0">
+            <i>No songs in queue</i>
+          </div>
+          <div v-else>
+            <div v-for="song in upNext" :key="song.YT_extension">
+              <div class="card song m-2">
+                <button class="button-no-format">
+                  {{ song.title }}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -79,9 +88,9 @@
             class="clickable"
             viewBox="0 0 16 16"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseWidthExample"
+            data-bs-target="#collapseUpNext"
             aria-expanded="false"
-            aria-controls="collapseWidthExample"
+            aria-controls="collapseUpNext"
           >
             <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
             <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
