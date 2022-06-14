@@ -147,15 +147,16 @@ export default {
 
     selectedSongController(song) {
       // check if the player is already created
-      console.log("Selected song received in AudioComponent: ", song);
+      // console.log("Selected song received in AudioComponent: ", song);
       if (this.playerIsReady) {
-        console.log("Player is already created, so passing the song to changeSong method");
+        // console.log("Player is already created, so passing the song to changeSong method");
         this.changeSong(song);
       } else {
-        console.log("Music player is not yet created, so calling the onYoutubeIframeReady method");
+        // console.log("Music player is not yet created, so calling the onYoutubeIframeReady method");
         this.onYouTubeIframeAPIReady(song);
       }
     },
+
     changeSong(song) {
       console.log("changing song to " + song);
       this.YTplayer.loadVideoById(song.YT_extension);
