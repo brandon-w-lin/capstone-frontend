@@ -48,7 +48,7 @@
         <div v-for="song in songs" :key="song.YT_extension">
           <div class="card song m-2">
             <button
-              @click="$emit('changeSong', song)"
+              @click="changeSongLocal(song)"
               :class="song.YT_extension === currentSong.YT_extension ? 'button-no-format playing' : 'button-no-format'"
             >
               <div class="row">
@@ -127,6 +127,14 @@ export default {
         });
       });
     },
+    changeSongLocal: function (song) {
+      // Determine which songs are following the current song
+      let upNext = this.songs.filter((s) => this.songs.indexOf(s) > this.songs.indexOf(song));
+
+      // console.log(upNext.map((s) => s.title));
+      this.$emit("changeSong", song, upNext);
+    },
+    // getUpNext: function (song, songs) {},
   },
   created: function () {
     this.showBook();

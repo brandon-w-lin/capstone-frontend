@@ -22,17 +22,16 @@ export default {
   methods: {
     // This method is called when one of the other views emits the changeSong event. The argument is listening for the payload emitted, so even though the @change-song="passChangeSong" does not contain an argument, it is required here.
 
-    passChangeSong(song) {
+    passChangeSong(song, upNext) {
       console.log("A song was selected and passed to the /App page. Passing along to the AudioComponent: ", song);
       // sets currentSong -> used as prop -> render song title in the AudioComponent
       this.currentSong = song;
-      this.$refs.audioComponent.selectedSongController(song);
+      this.$refs.audioComponent.selectedSongController(song, upNext);
     },
   },
   data() {
     return {
-      // sets title in AudioComponent
-      currentSong: {},
+      currentSong: {}, // sets title in AudioComponent
     };
   },
 };

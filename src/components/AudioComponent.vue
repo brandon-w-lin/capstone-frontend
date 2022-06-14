@@ -66,6 +66,7 @@ export default {
   name: "AudioComponent",
   props: {
     currentSong: Object,
+    upNext: Object,
   },
   data: function () {
     return {
@@ -87,6 +88,8 @@ export default {
         "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
       path_pause:
         "M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5z",
+
+      // upNext: {},
     };
   },
   methods: {
@@ -145,7 +148,7 @@ export default {
       this.YTplayer.seekTo(document.getElementById("progressBar").value, true);
     },
 
-    selectedSongController(song) {
+    selectedSongController(song, upNext) {
       // check if the player is already created
       // console.log("Selected song received in AudioComponent: ", song);
       if (this.playerIsReady) {
@@ -155,6 +158,8 @@ export default {
         // console.log("Music player is not yet created, so calling the onYoutubeIframeReady method");
         this.onYouTubeIframeAPIReady(song);
       }
+
+      console.log("upNext: ", upNext);
     },
 
     changeSong(song) {
