@@ -108,6 +108,7 @@ export default {
         },
       });
     },
+
     // Routes actions in the music player whenever the YT player state changes
     musicController() {
       // console.log(this.YTplayer.getPlayerState());
@@ -119,11 +120,9 @@ export default {
 
     // Creates and destroys the 1s interval that updates the scroll bar
     startProgressBar() {
-      console.log("hello from startProgressBar");
       this.progressBar = setInterval(this.trackTime, 1000);
     },
     stopProgressBar() {
-      console.log("hello from stopProgressBar");
       clearInterval(this.progressBar);
     },
     formatTime(input_seconds) {
@@ -140,13 +139,12 @@ export default {
     trackTime() {
       this.currentTime = this.YTplayer.getCurrentTime();
       this.formattedCurrentTime = this.formatTime(this.currentTime);
-      // document.getElementById("progressBar").value = this.currentTime;
-      console.log(this.currentTime);
+      // console.log(this.currentTime);
     },
-    // Needs to get element value rather than tracking the currentTime variable. Using currentTime will move the time position to itself
     scrollTo() {
       this.YTplayer.seekTo(document.getElementById("progressBar").value, true);
     },
+
     selectedSongController(song) {
       // check if the player is already created
       console.log("Selected song received in AudioComponent: ", song);
