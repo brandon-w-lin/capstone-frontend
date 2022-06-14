@@ -7,7 +7,12 @@
     <!-- @change-song is listening for whenever the changeSong event is emitted from the children in the router, and on that event calls the passChangeSong method here in the parent -->
     <router-view @change-song="passChangeSong" :current-song="currentSong" />
   </div>
-  <AudioComponent class="fixed-bottom" ref="audioComponent" :current-song="currentSong" />
+  <AudioComponent
+    class="fixed-bottom"
+    ref="audioComponent"
+    @change-song="updateCurrentSong"
+    :current-song="currentSong"
+  />
 </template>
 
 <script>
@@ -21,10 +26,12 @@ export default {
   },
   methods: {
     // This method is called when one of the other views emits the changeSong event. The argument is listening for the payload emitted, so even though the @change-song="passChangeSong" does not contain an argument, it is required here.
-
+    updateCurrentSong(song) {
+      this.currentSong = song;
+    },
     passChangeSong(song, upNext) {
       console.log("A song was selected and passed to the /App page. Passing along to the AudioComponent: ", song);
-      // sets currentSong -> used as prop -> render song title in the AudioComponent
+
       this.currentSong = song;
       this.$refs.audioComponent.selectedSongController(song, upNext);
     },
