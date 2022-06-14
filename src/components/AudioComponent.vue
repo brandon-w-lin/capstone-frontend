@@ -92,7 +92,6 @@ export default {
   },
   data: function () {
     return {
-      YT_extension: "wtHra9tFISY",
       playPauseGraphic:
         "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
       playing: false,
