@@ -167,8 +167,6 @@ export default {
       this.YTplayer.getPlayerState() === YT.PlayerState.BUFFERING
         ? this.YTplayer.pauseVideo()
         : this.YTplayer.playVideo();
-      // console.log("player state is: " + this.YTplayer.getPlayerState());
-      // this.progressBar(this.YTplayer.getPlayerState());
     },
     playPauseGraphicChange() {
       this.playPauseGraphic = this.YTplayer.getPlayerState() === 1 ? this.path_pause : this.path_play;
@@ -187,6 +185,7 @@ export default {
   cursor: hand;
   fill: var(--font-high);
 }
+
 .clickable:hover {
   fill: var(--color1-5);
 }
