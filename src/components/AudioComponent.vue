@@ -194,6 +194,10 @@ export default {
       this.currentTime = this.YTplayer.getCurrentTime();
       this.formattedCurrentTime = this.formatTime(this.currentTime);
       // console.log(this.currentTime);
+      console.log(this.duration - this.currentTime);
+      if (this.duration - this.currentTime < 1) {
+        this.nextSong();
+      }
     },
     scrollTo() {
       this.YTplayer.seekTo(document.getElementById("progressBar").value, true);
