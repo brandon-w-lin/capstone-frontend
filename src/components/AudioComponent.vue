@@ -92,25 +92,19 @@ export default {
   methods: {
     // Creates the youtube player from which the music will come
     onYouTubeIframeAPIReady(song) {
-      console.log("called onYouTubeIframeAPIReady");
+      // console.log("called onYouTubeIframeAPIReady");
       this.YTplayer = new YT.Player("youtube-player", {
         height: "0",
         width: "0",
-        // videoId: e.dataset.video,
         videoId: song.YT_extension,
         playerVars: { autoplay: 1 },
         events: {
           onReady: () => {
             this.YTplayer.setPlaybackQuality("small");
             this.playerIsReady = true;
-            console.log("Music player is now ready: ", this.playerIsReady);
+            // console.log("Music player is now ready: ", this.playerIsReady);
           },
           onStateChange: this.musicController,
-          // onStateChange: function (e) {
-          //   e.data === YT.PlayerState.ENDED;
-          // },
-          // onStateChange: function () {
-          // },
         },
       });
     },
