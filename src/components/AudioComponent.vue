@@ -69,7 +69,6 @@ export default {
   },
   data: function () {
     return {
-      playing: false,
       YTplayer: {},
       playerIsReady: false,
 
@@ -171,7 +170,6 @@ export default {
     },
 
     playPause() {
-      // this.playing = !this.playing;
       this.YTplayer.getPlayerState() === YT.PlayerState.PLAYING ||
       this.YTplayer.getPlayerState() === YT.PlayerState.BUFFERING
         ? this.YTplayer.pauseVideo()
