@@ -94,9 +94,9 @@ export default {
             let temp = response.data.volumeInfo;
             temp.id = response.data.id;
             this.books.push(temp);
-            console.log(this.books);
           });
         });
+        console.log(this.books);
       });
     },
   },
