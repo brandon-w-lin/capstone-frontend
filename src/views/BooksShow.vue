@@ -104,14 +104,6 @@ export default {
     };
   },
   methods: {
-    redirectBooksIndex: function () {
-      console.log("Redirecting to /books");
-      this.$router.push("/books");
-    },
-    redirectBooksEdit: function () {
-      console.log("Redirecting to /books/" + this.$route.params.id + "/edit");
-      this.$router.push("/books/" + this.$route.params.id + "/edit");
-    },
     showBook: function () {
       axios.get("https://www.googleapis.com/books/v1/volumes/" + this.$route.params.id).then((response) => {
         console.log(response.data);
