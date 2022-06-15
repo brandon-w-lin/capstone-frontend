@@ -41,14 +41,14 @@
                   width="40"
                   height="40"
                   viewBox="0 0 16 16"
-                  :class="song.id.videoId === currentSong.YT_extension ? 'pause-btn' : 'play-btn'"
+                  :class="song.id.videoId === currentSong.YT_extension && playerState ? 'pause-btn' : 'play-btn'"
                 >
                   <path class="p1" />
                   <path class="p2" />
                 </svg>
 
                 <button
-                  @click="$emit('changeSong', { YT_extension: song.id.videoId, title: song.snippet.title })"
+                  @click="$emit('changeSong', { YT_extension: song.id.videoId, title: song.snippet.title }, {})"
                   class="button-outline"
                 >
                   Listen
@@ -118,7 +118,7 @@ import axios from "axios";
 
 export default {
   emits: ["changeSong"],
-  props: { currentSong: Object },
+  props: { currentSong: Object, playerState: Boolean },
   data: function () {
     return {
       song: {},
@@ -162,6 +162,7 @@ export default {
         // this.book.description = this.book.description.setHTML();
       });
     },
+    // playPauseButtonHandler(song) {},
   },
   created() {
     this.showBook();

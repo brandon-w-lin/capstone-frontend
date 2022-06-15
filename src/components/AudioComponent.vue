@@ -115,7 +115,7 @@
 
 export default {
   name: "AudioComponent",
-  emits: ["changeSong"],
+  emits: ["changeSong", "changePlayerState"],
   props: {
     currentSong: Object,
   },
@@ -132,6 +132,9 @@ export default {
       progressBar: 0,
 
       // Play/pause controls
+      // Set player state for other views
+      playerState: false, // true => playing, false => paused
+
       // Set to the play button by default
       playPauseGraphic:
         "M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z",
@@ -232,10 +235,16 @@ export default {
     },
 
     playPause() {
-      this.YTplayer.getPlayerState() === YT.PlayerState.PLAYING ||
-      this.YTplayer.getPlayerState() === YT.PlayerState.BUFFERING
-        ? this.YTplayer.pauseVideo()
-        : this.YTplayer.playVideo();
+      if (this.YTplayer.getPlayerState() === YT.PlayerState.PLAYING ||
+      this.YTplayer.getPlayerState() === YT.PlayerState.BUFFERING) {
+
+        this.YTplayer.pauseVideo()
+        this.$emit("changePlayerState",false) // tell other views that the song has been paused
+      } else {
+        this.YTplayer.playVideo();
+        this.$emit("changePlayerState",true) // tell other views that the song has been resumed
+
+      }
     },
     playPauseGraphicChange() {
       this.playPauseGraphic = this.YTplayer.getPlayerState() === 1 ? this.path_pause : this.path_play;
