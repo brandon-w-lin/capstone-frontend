@@ -5,7 +5,12 @@
     current-song is passing prop down to set the title of the song in the player -->
   <div style="margin-top: 60px; margin-bottom: 150px">
     <!-- @change-song is listening for whenever the changeSong event is emitted from the children in the router, and on that event calls the passChangeSong method here in the parent -->
-    <router-view @change-song="passChangeSong" :current-song="currentSong" :player-state="playerState" />
+    <router-view
+      @change-song="passChangeSong"
+      :current-song="currentSong"
+      @change-player-state="playPause"
+      :player-state="playerState"
+    />
   </div>
   <AudioComponent
     class="fixed-bottom"
@@ -29,14 +34,17 @@ export default {
   data() {
     return {
       currentSong: {}, // sets title in AudioComponent
-      playerState: Boolean,
+      playerState: false,
     };
   },
   methods: {
     // This method is called when one of the other views emits the changeSong event. The argument is listening for the payload emitted, so even though the @change-song="passChangeSong" does not contain an argument, it is required here.
-    updatePlayerState(state) {
-      this.playerState = state;
-      console.log("from App.vue: state is playing: ", state);
+    playPause() {
+      this.$refs.audioComponent.playPause();
+    },
+    updatePlayerState() {
+      this.playerState = !this.playerState;
+      console.log("from App.vue: state is playing: ", this.playerState);
     },
     updateCurrentSong(song) {
       this.currentSong = song;

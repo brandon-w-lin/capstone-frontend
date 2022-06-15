@@ -173,6 +173,7 @@ export default {
       this.formattedDuration = this.formatTime(this.duration);
       this.playPauseGraphicChange();
       this.YTplayer.getPlayerState() !== 1 ? this.stopProgressBar() : this.startProgressBar();
+      this.$emit("changePlayerState");
     },
 
     // Creates and destroys the 1s interval that updates the scroll bar
@@ -235,15 +236,13 @@ export default {
     },
 
     playPause() {
-      if (this.YTplayer.getPlayerState() === YT.PlayerState.PLAYING ||
-      this.YTplayer.getPlayerState() === YT.PlayerState.BUFFERING) {
-
-        this.YTplayer.pauseVideo()
-        this.$emit("changePlayerState",false) // tell other views that the song has been paused
+      if (
+        this.YTplayer.getPlayerState() === YT.PlayerState.PLAYING ||
+        this.YTplayer.getPlayerState() === YT.PlayerState.BUFFERING
+      ) {
+        this.YTplayer.pauseVideo();
       } else {
         this.YTplayer.playVideo();
-        this.$emit("changePlayerState",true) // tell other views that the song has been resumed
-
       }
     },
     playPauseGraphicChange() {

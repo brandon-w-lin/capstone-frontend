@@ -42,6 +42,7 @@
                   height="40"
                   viewBox="0 0 16 16"
                   :class="song.id.videoId === currentSong.YT_extension && playerState ? 'pause-btn' : 'play-btn'"
+                  @click="playPauseButtonHandler(song)"
                 >
                   <path class="p1" />
                   <path class="p2" />
@@ -117,7 +118,7 @@
 import axios from "axios";
 
 export default {
-  emits: ["changeSong"],
+  emits: ["changeSong", "changePlayerState"],
   props: { currentSong: Object, playerState: Boolean },
   data: function () {
     return {
@@ -162,7 +163,19 @@ export default {
         // this.book.description = this.book.description.setHTML();
       });
     },
-    // playPauseButtonHandler(song) {},
+    playPauseButtonHandler(song) {
+      // check if the song on which this button was clicked is the current song
+      // Yes => check playerState
+      // playing => pause
+      // paused => play
+      // No => change song
+
+      if (song.id.videoId === this.currentSong.YT_extension) {
+        this.$emit("changePlayerState", !this.playerState);
+      } else {
+        this.$emit("changeSong", { YT_extension: song.id.videoId, title: song.snippet.title }, {});
+      }
+    },
   },
   created() {
     this.showBook();
