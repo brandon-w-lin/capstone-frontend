@@ -36,6 +36,17 @@
             <div class="row m-1" v-html="song.snippet.title"></div>
             <div class="row m-1">
               <div class="col-auto">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 16 16"
+                  :class="song.id.videoId === currentSong.YT_extension ? 'pause-btn' : 'play-btn'"
+                >
+                  <path class="p1" />
+                  <path class="p2" />
+                </svg>
+
                 <button
                   @click="$emit('changeSong', { YT_extension: song.id.videoId, title: song.snippet.title })"
                   class="button-outline"
@@ -107,6 +118,7 @@ import axios from "axios";
 
 export default {
   emits: ["changeSong"],
+  props: { currentSong: Object },
   data: function () {
     return {
       song: {},
@@ -158,6 +170,49 @@ export default {
 </script>
 
 <style>
+.play-btn,
+.pause-btn {
+  fill: var(--font-high);
+}
+
+.play-btn:hover,
+.pause-btn:hover {
+  cursor: pointer;
+}
+
+.play-btn .p1 {
+  d: path("M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z");
+}
+.play-btn .p2 {
+  d: path(
+    "M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"
+  );
+}
+
+.play-btn:hover path {
+  d: path(
+    "M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm6.79-6.907A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"
+  );
+}
+
+.pause-btn .p1 {
+  d: path(
+    "M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"
+  );
+}
+
+.pause-btn .p2 {
+  d: path(
+    "M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"
+  );
+}
+
+.pause-btn:hover path {
+  d: path(
+    "M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm6.25-7C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"
+  );
+}
+
 .yt-song {
   flex-direction: row;
   height: 90px;
@@ -170,6 +225,10 @@ export default {
 .yt-song:hover {
   background-color: var(--bg-card-hover);
   color: var(--font-highest);
+}
+.yt-song:hover .play-btn,
+.yt-song:hover .pause-btn {
+  fill: var(--font-highest);
 }
 
 .yt-song:hover .button-outline {
