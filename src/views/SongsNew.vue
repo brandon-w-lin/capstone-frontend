@@ -47,13 +47,6 @@
                   <path class="p1" />
                   <path class="p2" />
                 </svg>
-
-                <button
-                  @click="$emit('changeSong', { YT_extension: song.id.videoId, title: song.snippet.title }, {})"
-                  class="button-outline"
-                >
-                  Listen
-                </button>
               </div>
               <div class="col-auto">
                 <button class="button-outline" @click="addSongToBook(song.id.videoId)">Add to book</button>
