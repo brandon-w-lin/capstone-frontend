@@ -5,35 +5,46 @@
         <h1 class="pt-3">Welcome to WhileYouRead</h1>
         <h4>A platform to pair your book with the perfect song.</h4>
       </div>
-      <div class="">
-        <form class="d-flex">
-          <input
-            id="homepage-search-form"
-            type="search"
-            @keyup.enter="search"
-            v-model="searchQuery"
-            placeholder="Search books"
-            aria-label="Search"
-          />
-          <!-- The second input box is needed (but hidden) to v-model the searchQuery...for some reason whenever there is only one input box, the searchQuery variable will not remain populated when calling the search() method and pushing to the route. -->
-          <input v-show="false" v-model="searchQuery" />
+      <div>
+        <div class="mb-4">
+          <router-link to="/books" class="button-outline">Browse books with songs</router-link>
+          <span class="m-2">or search through the Google Book catalogue below:</span>
+        </div>
+        <div>
+          <form class="d-flex">
+            <input
+              id="homepage-search-form"
+              type="search"
+              @keyup.enter="search"
+              v-model="searchQuery"
+              placeholder="Search books"
+              aria-label="Search"
+            />
+            <!-- The second input box is needed (but hidden) to v-model the searchQuery...for some reason whenever there is only one input box, the searchQuery variable will not remain populated when calling the search() method and pushing to the route. -->
+            <input v-show="false" v-model="searchQuery" />
 
-          <router-link id="homepage-search-button" :to="{ path: '/books/search', query: { q: searchQuery } }">
-            Search
-          </router-link>
-        </form>
+            <router-link id="homepage-search-button" :to="{ path: '/books/search', query: { q: searchQuery } }">
+              Search
+            </router-link>
+          </form>
+        </div>
       </div>
-      <div class="m-1">
+      <!-- <div class="m-1">
         <input type="checkbox" id="chkBox-SearchBooksWithSongs" />
         <label for="chkBox-SearchBooksWithSongs">Include books that do not yet have songs</label>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="divider1"></div>
   <div id="how-does-it-work">
     <div class="container">
       <h2>How does it work?</h2>
-      insert video here
+      [insert video here]
+      <ul>
+        <li>Browse books that have related songs</li>
+        <li>Search the entire google books database for new books</li>
+        <li>Add songs from YouTube by clicking submit on a book's page</li>
+      </ul>
     </div>
   </div>
   <div class="divider2"></div>
@@ -69,7 +80,7 @@ export default {
 .divider1 {
   background-image: url(@/assets/layered-waves-haikei-dark-to-green.svg);
   background-size: 100% 100%;
-  height: 300px;
+  height: 200px;
 }
 
 .divider2 {
