@@ -27,7 +27,6 @@
       </div>
     </div>
     <div class="row">
-      <!-- Padding added to the column before adding the card -->
       <div class="col-xl-6 p-3" v-for="song in songSearchResponse.items" :key="song.id.videoId">
         <div class="card yt-song">
           <div class="img-container">
@@ -39,13 +38,13 @@
               <div class="col-auto">
                 <button
                   @click="$emit('changeSong', { YT_extension: song.id.videoId, title: song.snippet.title })"
-                  class="btn btn-primary"
+                  class="button-outline"
                 >
                   Listen
                 </button>
               </div>
               <div class="col-auto">
-                <button class="btn btn-primary" @click="addSongToBook(song.id.videoId)">Add to book</button>
+                <button class="button-outline" @click="addSongToBook(song.id.videoId)">Add to book</button>
               </div>
             </div>
           </div>
@@ -162,6 +161,32 @@ export default {
 .yt-song {
   flex-direction: row;
   height: 90px;
+}
+
+.yt-song img {
+  transition: transform 0.2s;
+  filter: saturate(0.87);
+}
+.yt-song:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--font-highest);
+}
+
+.yt-song:hover .button-outline {
+  border-color: var(--font-highest);
+  color: var(--font-highest);
+}
+.yt-song:hover .button-outline {
+  border-color: var(--font-highest);
+  color: var(--font-highest);
+}
+.yt-song .button-outline:hover {
+  color: var(--color1-2);
+  background-color: var(--font-highest);
+}
+
+.yt-song:hover img {
+  transform: scale(1.05);
 }
 
 .yt-song .img-container {
