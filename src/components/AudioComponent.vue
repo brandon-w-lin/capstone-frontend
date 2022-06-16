@@ -10,7 +10,7 @@
           <div v-else>
             <div v-for="song in upNext" :key="song.YT_extension">
               <div class="card song m-2">
-                <button class="button-no-format song">
+                <button class="button-no-format song" @click="changeSong(song)">
                   {{ song.title }}
                 </button>
               </div>
@@ -225,6 +225,8 @@ export default {
     changeSong(song) {
       console.log("changing song to " + song);
       this.YTplayer.loadVideoById(song.YT_extension);
+      this.$emit("changeSong", song);
+      this.upNext = this.upNext.filter((s) => this.upNext.indexOf(s) > this.upNext.indexOf(song));
     },
 
     nextSong() {
@@ -232,7 +234,7 @@ export default {
       if (this.upNext.length > 0) {
         let next = this.upNext.shift();
         this.changeSong(next);
-        this.$emit("changeSong", next);
+        // this.$emit("changeSong", next);
       }
     },
 
