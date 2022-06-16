@@ -48,13 +48,23 @@
         <div v-for="song in songs" :key="song.YT_extension">
           <div class="card song m-2">
             <button
-              @click="changeSongLocal(song)"
+              @click="playPauseButtonHandler(song)"
               :class="song.YT_extension === currentSong.YT_extension ? 'button-no-format playing' : 'button-no-format'"
             >
               <div class="row">
                 <div class="col-1">
                   <div v-if="song.YT_extension === currentSong.YT_extension" class="playing-icon">
                     <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 16 16"
+                      :class="playerState ? 'pause-btn' : 'play-btn'"
+                    >
+                      <path class="p1" />
+                      <path class="p2" />
+                    </svg>
+                    <!-- <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -67,7 +77,7 @@
                       />
                       <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z" />
                       <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z" />
-                    </svg>
+                    </svg> -->
                     <!-- <img src="@/assets/music-note-beamed.svg" style="fill: green" alt="Now playing icon" /> -->
                   </div>
                 </div>
@@ -92,8 +102,8 @@
 import axios from "axios";
 
 export default {
-  emits: ["changeSong"],
-  props: { currentSong: Object },
+  emits: ["changeSong", "changePlayerState"],
+  props: { currentSong: Object, playerState: Boolean },
   data: function () {
     return {
       apiResponse: {},
@@ -104,6 +114,24 @@ export default {
     };
   },
   methods: {
+    playPauseButtonHandler(song) {
+      // check if the song on which this button was clicked is the current song
+      // Yes => check playerState
+      // playing => pause
+      // paused => play
+      // No => change song
+      console.log("song.YT_extension: ", song.YT_extension);
+      console.log("this.currentSong.YT_extension: ", this.currentSong.YT_extension);
+      if (song.YT_extension === this.currentSong.YT_extension) {
+        this.$emit("changePlayerState", !this.playerState);
+      } else {
+        // Determine which songs are following the current song
+        let upNext = this.songs.filter((s) => this.songs.indexOf(s) > this.songs.indexOf(song));
+
+        // console.log(upNext.map((s) => s.title));
+        this.$emit("changeSong", song, upNext);
+      }
+    },
     showBook: function () {
       axios.get("https://www.googleapis.com/books/v1/volumes/" + this.$route.params.id).then((response) => {
         console.log(response.data);
@@ -156,5 +184,52 @@ export default {
 img {
   width: 100%;
   height: auto;
+}
+
+.play-btn,
+.pause-btn,
+.add-btn,
+.added-btn {
+  fill: var(--font-high);
+}
+
+.play-btn:hover,
+.pause-btn:hover,
+.add-btn:hover,
+.added-btn:hover {
+  cursor: pointer;
+}
+
+.play-btn .p1 {
+  d: path("M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z");
+}
+.play-btn .p2 {
+  d: path(
+    "M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"
+  );
+}
+
+.play-btn:hover path {
+  d: path(
+    "M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm6.79-6.907A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"
+  );
+}
+
+.pause-btn .p1 {
+  d: path(
+    "M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"
+  );
+}
+
+.pause-btn .p2 {
+  d: path(
+    "M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"
+  );
+}
+
+.pause-btn:hover path {
+  d: path(
+    "M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm6.25-7C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"
+  );
 }
 </style>
