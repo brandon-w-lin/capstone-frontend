@@ -55,6 +55,7 @@
                   height="40"
                   viewBox="0 0 16 16"
                   :class="associated_songs.has(song.id.videoId) ? 'added-btn' : 'add-btn'"
+                  @click="addSongToBook(song.id.videoId)"
                 >
                   <path class="p1" />
                   <path class="p2" />
@@ -149,7 +150,8 @@ export default {
           console.log("creating booksong association for book / song ID's: ", this.$route.query.bookID, songID);
           console.log("response: ", response);
         });
-      this.$router.push("/books/" + this.$route.query.bookID);
+      this.associated_songs.add(songID);
+      // this.$router.push("/books/" + this.$route.query.bookID);
     },
     searchSongs(searchQuery) {
       axios.get("/songs/search?q=" + searchQuery).then((response) => {
