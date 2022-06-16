@@ -50,6 +50,7 @@
             <button
               @click="playPauseButtonHandler(song)"
               :class="song.YT_extension === currentSong.YT_extension ? 'button-no-format playing' : 'button-no-format'"
+              style="text-align: left"
             >
               <div class="row">
                 <div class="col-1">
