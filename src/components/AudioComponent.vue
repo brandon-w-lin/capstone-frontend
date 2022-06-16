@@ -1,6 +1,7 @@
 <template>
   <div id="player">
     <div class="container">
+      <!-- Queue / UpNext -->
       <div class="collapse" id="collapseUpNext">
         <div class="card p-2">
           <div v-if="upNext.length == 0">
@@ -9,7 +10,7 @@
           <div v-else>
             <div v-for="song in upNext" :key="song.YT_extension">
               <div class="card song m-2">
-                <button class="button-no-format">
+                <button class="button-no-format song">
                   {{ song.title }}
                 </button>
               </div>

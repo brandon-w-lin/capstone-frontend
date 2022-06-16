@@ -49,8 +49,11 @@
           <div class="card song m-2">
             <button
               @click="playPauseButtonHandler(song)"
-              :class="song.YT_extension === currentSong.YT_extension ? 'button-no-format playing' : 'button-no-format'"
-              style="text-align: left"
+              :class="
+                song.YT_extension === currentSong.YT_extension
+                  ? 'button-no-format playing song'
+                  : 'button-no-format song'
+              "
             >
               <div class="row">
                 <div class="col-1">

@@ -252,6 +252,7 @@ nav a.router-link-exact-active {
   overflow: hidden;
   text-decoration: none;
   transition: 0.5s, color 0.5s;
+  text-align: left;
 }
 
 .song:hover {
