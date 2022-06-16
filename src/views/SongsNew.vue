@@ -13,7 +13,7 @@
             type="search"
             @keyup.enter="searchSongs(searchQuery)"
             v-model="searchQuery"
-            class="form-control me-2"
+            class="form-main w-100 me-2"
             placeholder="Search songs"
             aria-label="Search"
           />
