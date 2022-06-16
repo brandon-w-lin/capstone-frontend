@@ -20,7 +20,7 @@
           <!-- The second input box is needed (but hidden) to v-model the searchQuery...for some reason whenever there is only one input box, the searchQuery variable will not remain populated when calling the search() method and pushing to the route. -->
           <input v-show="false" v-model="searchQuery" />
 
-          <router-link class="btn btn-outline-success" :to="{ path: '/books/search', query: { q: searchQuery } }">
+          <router-link class="button-outline" :to="{ path: '/books/search', query: { q: searchQuery } }">
             Search
           </router-link>
         </form>
