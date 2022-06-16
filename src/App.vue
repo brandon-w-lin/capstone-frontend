@@ -195,11 +195,6 @@ nav a.router-link-exact-active {
   color: var(--color1-5);
 }
 
-.playing-icon {
-  animation: pulse 1.5s infinite;
-  transform: scale(1);
-}
-
 @keyframes pulse {
   0% {
     transform: scale(0.9);

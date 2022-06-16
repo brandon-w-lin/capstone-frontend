@@ -53,7 +53,7 @@
             >
               <div class="row">
                 <div class="col-1">
-                  <div v-if="song.YT_extension === currentSong.YT_extension" class="playing-icon">
+                  <div v-if="song.YT_extension === currentSong.YT_extension">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="40"
