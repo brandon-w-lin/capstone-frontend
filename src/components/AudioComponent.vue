@@ -321,7 +321,7 @@ input[type="range"]::-ms-track {
     border-radius: 50%;
     cursor: ew-resize;
     background: var(--color1-5);
-    box-shadow: calc(-80vw - 5px) 0 0 80vw var(--color1-5);
+    box-shadow: calc(-80vw - 5px) 0 0 80vw var(--color1-4);
   }
 }
 </style>
