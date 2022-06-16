@@ -29,7 +29,7 @@
             <router-link to="/" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/books" class="nav-link">All Books</router-link>
+            <router-link to="/books" class="nav-link">Browse</router-link>
           </li>
           <!-- <li class="nav-item">
             <router-link to="/songs" class="nav-link">All Songs</router-link>
