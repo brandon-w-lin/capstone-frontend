@@ -38,13 +38,16 @@
   <div class="divider1"></div>
   <div id="how-does-it-work">
     <div class="container">
-      <h2>How does it work?</h2>
-      [insert video here]
-      <ul>
-        <li>Browse books that have related songs</li>
-        <li>Search the entire google books database for new books</li>
-        <li>Add songs from YouTube by clicking submit on a book's page</li>
-      </ul>
+      <h2>See how it works:</h2>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/Zu5S2ZPF4-I"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
   <div class="divider2"></div>
@@ -91,7 +94,7 @@ export default {
 
 #how-does-it-work {
   background-color: var(--color1-2);
-  height: 300px;
+  height: 350px;
 }
 
 #homepage-search-form {
