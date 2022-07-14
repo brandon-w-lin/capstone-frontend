@@ -40,6 +40,7 @@
     <div class="container">
       <h2>See how it works:</h2>
       <iframe
+        id="intro-video"
         width="560"
         height="315"
         src="https://www.youtube.com/embed/Zu5S2ZPF4-I"
@@ -142,5 +143,12 @@ label {
   display: inline-block;
   width: 100px;
   vertical-align: top;
+}
+
+@media (max-width: 768px) {
+  #intro-video {
+    width: 90%;
+    /* height: auto; */
+  }
 }
 </style>
