@@ -13,7 +13,7 @@
         <div>
           <form class="d-flex">
             <input
-              id="homepage-search-form"
+              class="form-main"
               type="search"
               @keyup.enter="search"
               v-model="searchQuery"
@@ -23,7 +23,7 @@
             <!-- The second input box is needed (but hidden) to v-model the searchQuery...for some reason whenever there is only one input box, the searchQuery variable will not remain populated when calling the search() method and pushing to the route. -->
             <input v-show="false" v-model="searchQuery" />
 
-            <router-link id="homepage-search-button" :to="{ path: '/books/search', query: { q: searchQuery } }">
+            <router-link class="button-outline" :to="{ path: '/books/search', query: { q: searchQuery } }">
               Search
             </router-link>
           </form>
@@ -120,36 +120,5 @@ export default {
 #how-does-it-work {
   background-color: var(--color1-2);
   height: 350px;
-}
-
-#homepage-search-form {
-  background-color: var(--font-med);
-  width: 50%;
-  padding: 5px;
-}
-#homepage-search-form::placeholder {
-  color: var(--font-high);
-}
-
-#homepage-search-form:focus {
-  background-color: var(--font-high);
-  color: var(--color2-1);
-  border: none;
-}
-
-#homepage-search-button {
-  background-color: transparent;
-  color: var(--color1-5);
-  border: solid;
-  border-color: var(--color1-4);
-  border-radius: 5px;
-  text-decoration: none;
-  margin: 0px 2px;
-  padding: 5px 25px;
-}
-
-#homepage-search-button:hover {
-  border-color: var(--font-high);
-  color: var(--font-high);
 }
 </style>
