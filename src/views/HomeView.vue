@@ -8,8 +8,8 @@
       <div>
         <div class="mb-4">
           <router-link to="/books" class="button-outline">Browse books with songs</router-link>
-          <span class="m-2">or search through the Google Book catalogue below:</span>
         </div>
+        <div class="my-2">or search through the Google Book catalogue below:</div>
         <div>
           <form class="d-flex">
             <input
@@ -56,6 +56,20 @@
       <h2>Contact Me:</h2>
       <!-- modify this form HTML and place wherever you want your form -->
       <form action="https://formspree.io/f/xnqwydyk" method="POST">
+        <div class="my-1">
+          <label for="name">Name:</label>
+          <input type="name" name="name" class="form-main" />
+        </div>
+        <div class="my-1">
+          <label for="email">Email:</label>
+          <input type="email" name="email" class="form-main" />
+        </div>
+        <div class="my-1">
+          <label for="message">Message:</label>
+          <textarea name="message" class="form-main"></textarea>
+        </div>
+
+        <!--         
         <div class="row my-1">
           <div class="col-1">Name:</div>
           <div class="col">
@@ -73,9 +87,11 @@
           <div class="col">
             <textarea name="message" class="form-main"></textarea>
           </div>
-        </div>
+        </div> -->
         <!-- your other form fields go here -->
-        <button type="submit" class="button-outline">Send</button>
+        <div>
+          <button type="submit" class="button-outline my-2">Send</button>
+        </div>
       </form>
     </div>
   </div>
@@ -120,5 +136,11 @@ export default {
 #how-does-it-work {
   background-color: var(--color1-2);
   height: 350px;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
 }
 </style>

@@ -119,9 +119,19 @@ export default {
   color: var(--font-high);
 }
 
+@media (max-width: 768px) {
+  .form-main {
+    width: 90%;
+  }
+}
+@media (min-width: 768px) {
+  .form-main {
+    width: 50%;
+  }
+}
+
 .form-main {
   background-color: var(--font-med);
-  width: 50%;
   padding: 5px;
   border: solid;
   border-color: var(--font-low);
@@ -160,7 +170,7 @@ export default {
 
 ::placeholder {
   color: var(--font-low);
-  /* color: var(--font-low); 
+  /* color: var(--font-low);
 } */
 
 body {
