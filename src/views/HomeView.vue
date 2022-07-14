@@ -52,7 +52,32 @@
   </div>
   <div class="divider2"></div>
   <div class="absolute-bottom">
-    <div class="container">About | Contact me</div>
+    <div class="container">
+      <h2>Contact Me:</h2>
+      <!-- modify this form HTML and place wherever you want your form -->
+      <form action="https://formspree.io/f/xnqwydyk" method="POST">
+        <div class="row my-1">
+          <div class="col-1">Name:</div>
+          <div class="col">
+            <input type="name" name="name" class="form-main" />
+          </div>
+        </div>
+        <div class="row my-1">
+          <div class="col-1">Email:</div>
+          <div class="col">
+            <input type="email" name="email" class="form-main" />
+          </div>
+        </div>
+        <div class="row my-1">
+          <div class="col-1">Message:</div>
+          <div class="col">
+            <textarea name="message" class="form-main"></textarea>
+          </div>
+        </div>
+        <!-- your other form fields go here -->
+        <button type="submit" class="button-outline">Send</button>
+      </form>
+    </div>
   </div>
 </template>
 
