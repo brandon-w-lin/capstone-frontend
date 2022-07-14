@@ -54,6 +54,16 @@
   <div class="divider2"></div>
   <div class="absolute-bottom">
     <div class="container">
+      <h2>Reach me at:</h2>
+      <div class="my-1">
+        <img src="@/assets/iconmonstr-linkedin-5.svg" alt="linkedin" style="height: 30px; width: auto" class="m-2" />
+
+        <a href="https://www.linkedin.com/in/brandon-w-lin/" class="href">https://www.linkedin.com/in/brandon-w-lin/</a>
+      </div>
+      <div class="my-1">
+        <img src="@/assets/Octicons-mark-github.svg" alt="github" style="height: 30px; width: auto" class="m-2" />
+        <a href="https://github.com/brandon-w-lin" class="href">https://github.com/brandon-w-lin</a>
+      </div>
       <h2>Contact Me:</h2>
       <!-- modify this form HTML and place wherever you want your form -->
       <form action="https://formspree.io/f/xnqwydyk" method="POST">
@@ -150,5 +160,13 @@ label {
     width: 90%;
     /* height: auto; */
   }
+}
+
+.href {
+  color: white;
+}
+
+.href:hover {
+  color: var(--color1-5);
 }
 </style>
