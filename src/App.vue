@@ -123,6 +123,9 @@ export default {
   background-color: var(--font-med);
   width: 50%;
   padding: 5px;
+  border: solid;
+  border-color: var(--font-low);
+  border-radius: 5px;
 }
 .form-main::placeholder {
   color: var(--font-high);
@@ -131,7 +134,7 @@ export default {
 .form-main:focus {
   background-color: var(--font-high);
   color: var(--color2-1);
-  border: none;
+  outline: none;
 }
 /* .wyr-form {
   background-color: var(--bg-card);
